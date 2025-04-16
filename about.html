@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEEK 1</title>
+    <link rel="stylesheet" href="page.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
+  </head>
+
+  <div class="navbar">
+    <a href="week1.html" class="tab-week1">Week 1</a>
+    <a href="week2.html" class="tab-week2">Week 2</a>
+    <a href="week3.html" class="tab-week3">Week 3</a>
+    <a href="week4.html" class="tab-week4">Week 4</a>
+    <a href="week5.html" class="tab-week5">Week 5</a>
+    <a href="week6.html" class="tab-week6">Week 6</a>
+    <a href="index.html" class="tab-home">Home</a>
+    <a href="about.html" class="tab-about active">About</a>
+  </div>
+
+    <h1>Workbook Design</h1>
+    <div class="container">
+      <div class="column left">
+        <p>This workbook explores my journey through interactive media—experimenting with code, interface, and visual design. Here, I reflect on the design choices I made, what worked, what didn’t, and how I iterated on those ideas.</p>
+      </div>
+      <div class="column right">
+      </div>
+    </div>
+    <div class="container">
+      <div class="column left">
+        <h2>Homepage Design</h2>
+        <p>I wanted the homepage to feel playful and personal, like opening a digital folder full of memories and creative bits. I used floating folders that respond to clicks, a sound-reactive grid background, and nostalgic icons that lead to different activities (like drawing, activating the webcam, or a sticky note).</p>
+        <p>Getting the grid animation to sync with sound was tricky. At first, it didn’t feel reactive enough, so I adjusted the mapping and hover zones to exaggerate movement.</p>
+        <p>Iterated: Originally, the folders didn’t float. Adding floating animations, a ‘glow’ on mouse hover and  sound cues made it feel more alive and interactive.</p>
+      </div>
+      <div class="column right">
+        <img
+          src="img/About/homepage.gif"
+          alt="Homepage GIF"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column left">
+        <h2>Details:</h2>
+        <h2>Interactive Grid & Sound Control</h2>
+        <p>The background of my homepage features a floating, animated grid made with p5.js. It shifts and wiggles based on the position of the mouse, creating a dynamic movement as you explore the screen.</p>
+        <p>The grid points closest to the mouse react the most. I used <code>dist()</code> and <code>map()</code> to control how much each point moves, the closer a point is to the cursor, the more it’s pushed around. This created a ripple-like effect around the mouse.</p>
+        <p>I also mapped the <code>mouseX</code> position to control the volume of the background music. So when your cursor is on the left, the volume is low — and as it moves right, it gradually increases. It adds a subtle layer of interactivity that makes the page feel more responsive and alive.</p>
+        <p>Combining visual movement with audio feedback made the experience feel more immersive. Even small changes in cursor position create noticeable effects, which encourages users to explore and interact more playfully. </p>
+
+      </div>
+      <div class="column right">
+        <p>Inspired by:</p>
+        <img
+          src="img/About/Inspired.png"
+          alt="Inspiration"
+          class="img-responsive"
+          style="max-width: 300px; width: 100%; height: auto; display: block; margin: 0 auto;"
+          
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column left">
+        <h2>Webcam Feature</h2>
+        <p>I wanted to add something playful, so I added a floating camera icon that opens to a webcam. I applied a POSTERIZE filter to make it feel more stylised and distinct from a basic camera feed.</p>
+        <p>I was inspired by early webcam art and wanted it to feel a bit surreal.</p>
+        <p>I found it challenging embedding it directly because of canvas conflicts, so I moved it to a new page and linked it from the homepage.</p>
+      </div>
+      <div class="column right">
+        <img
+          src="img/webcam.png"
+          alt="Website Iteration"
+          class="img-responsive"
+          style="max-width: 300px; width: 100%; height: auto; display: block; margin: 0 auto;"
+        />
+    
+      </div>
+    </div>
+    <div class="container">
+    <div class="column left">
+      <h2>Interactive Drawing Experiments</h2>
+      <p>I made multiple sketches where users can paint with shapes or images. I wanted to explore different types of interactivity—mousePressed, drag, keyPressed, etc. Each one gave me a better understanding of how user input can be creative.</p>
+      <p> I fixed this by separating it to an individual page (paint.html) and linked it through the floating paint icon.</p>
+      
+
+    </div>
+    <div class="column right">
+      <img
+      src="img/paint.png"
+      alt="Paint Icon"
+      class="img-responsive"
+      style="max-width: 300px; width: 100%; height: auto; display: block; margin: 0 auto;"
+      />
+     </div>
+    </div>
+    <div class="container">
+    <div class="column left">
+      <h2>Floating Notepad</h2>
+      <p>One of my favourite features on the homepage is the floating notepad icon. When clicked, it opens a draggable notepad where users can type and save thoughts or reminders.</p>
+      <p>I wanted to make the homepage feel more personal and interactive, like a real desk space. The idea was to create a space for users to leave little notes for themselves, as if they were working inside the workbook.</p>
+      <p> I used <code>localStorage</code> to save whatever the user types so it stays there even if they refresh or revisit the site later. The notepad can also be moved around the screen, adding to the playful, tactile feel.</p>
+      <p> At first, the note opened in the center and blocked everything, so I repositioned it to the bottom right corner and made it draggable with JavaScript.</p>
+      <p>This feature added a layer of personalisation and interactivity I didn’t expect, and it ended up becoming one of the most functional elements in the workbook.</p>
+
+
+    </div>
+    <div class="column right">
+      <img
+      src="img/notepad.png"
+      alt="Notepad Icon"
+      class="img-responsive"
+      style="max-width: 300px; width: 100%; height: auto; display: block; margin: 0 auto;"
+      />
+     </div>
+    </div>
+    <div class="container">
+    <div class="column left">
+      <h2>Navigation & Tabs</h2>
+      <p>Each folder opens a “week” page, styled with tabs that change colour. I wanted the tabs to feel like old-school folder dividers. I used progressive shades of blue for consistency and hover effects for feedback.</p>
+      <p>Challenge: Some tabs weren’t showing their colours due to missing classes. I added .tab-week classes in both CSS and HTML.</p>
+    </div>
+    <div class="column right">
+      <img
+        src="img/About/Tab.png"
+        alt="Tab Design"
+        class="img-responsive"
+      />
+     </div>
+    </div>
+    <div class=container>
+      <div class="column left">
+        <h2>Homepage Design Iterations</h2>
+        <p>This was my Workbook 1 final submission. After receiving feedback about the lack of interactivity, I decided to completely redesign it.</p>
+<p>I started by making the background more dynamic and responsive, while still keeping that wave-like movement. I wanted it to feel like a kind of cyber ocean.</p>
+<p>I also knew I wanted to incorporate music, but in a way that felt interactive and tied into the user’s movement.</p>
+      </div>
+      <div class="column right">
+        <img
+        src="img/About/exp-0.png"
+        alt="Experiment 1"
+        class="img-responsive"
+      />
+    </div>
+    </div>
+    <div class=container>
+      <div class="column left">
+        <p>More Iterations:</p>
+      </div>
+        
+      <div class="column right">
+        <img
+        src="img/About/exp-1.png"
+        alt="Experiment 1"
+        class="img-responsive"
+      />
+    </div>
+    </div>
+    <div class=container>
+      <div class="column left">
+        <p>Played around with the background and grid colours:</p>
+      </div>
+      <div class="column right">
+    <img
+        src="img/About/exp-2.png"
+        alt="Experiment"
+        class="img-responsive"
+      />
+      <img
+        src="img/About/exp-3.png"
+        alt="Experiment"
+        class="img-responsive"
+      />
+      <img
+        src="img/About/exp-4.png"
+        alt="Experiment"
+        class="img-responsive"
+      />
+    </div>
+    </div>
+    <div class=container>
+      <div class="column left">
+        <p>Trying the Bubble Text Effect:</p>
+        <p>This was inspired by my Hunt n Gather from week 4</p>
+        <p>I tried to add a bubble font effect on top of the interactive grid to make the homepage feel even more dynamic. The idea was to have the letters sort of float away when the mouse hovered over it, which would’ve added a fun layer of interactivity.</p>
+        <p>But no matter how much I tweaked it, the text either clashed with the movement of the grid and altered how the colours appeared. I spent a while trying to get it to work but eventually decided to scrap the idea.</p>
+        <p>Final Design:</p>
+        
+      </div>
+        <div class="column right">
+        <img
+        src="img/About/exp-5.png"
+        alt="Experiment"
+        class="img-responsive"
+      />
+      <img
+        src="img/About/exp-6.png"
+        alt="Experiment"
+        class="img-responsive"
+      />
+    </div>
+    </div>
+    <div class=container>
+      <div class="column left">
+        <p>Final Design:</p>
+        <p>So, instead, I shifted my focus and took the design in a new direction. I started adding old-school Windows-style icons like Notepad, Paint, and the Webcam. That shift made everything click. It felt way more like a digital workspace and really tied into the playful theme I was going for.</p>
+
+        
+      </div>
+        <div class="column right">
+        <img
+        src="img/About/Final.png"
+        alt="Experiment"
+        class="img-responsive"
+      />
+
+    </div>
+    </div>
+   
+    <div class="spacer"></div>
+  </body>
+</html>

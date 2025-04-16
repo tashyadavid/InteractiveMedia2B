@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Draw Something!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #111;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      #ui {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 12px;
+        border-radius: 12px;
+      }
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        background: black;
+        color: white;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.2s;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      button:hover {
+        background: #79fe0c;
+        color: black;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      #legend {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 14px;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      .color-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      .swatch {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      canvas {
+        cursor: url("https://cdn-icons-png.flaticon.com/512/484/484662.png") 0
+            32,
+          auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <button onclick="clearCanvas()">Clear</button>
+      <button onclick="window.location.href='index.html'">Back</button>
+
+      <div id="legend">
+        <p>Press a number to pick color:</p>
+        <div class="color-box">
+          <div class="swatch" style="background: red"></div>
+          1 = Red
+        </div>
+        <div class="color-box">
+          <div class="swatch" style="background: orange"></div>
+          2 = Orange
+        </div>
+        <div class="color-box">
+          <div class="swatch" style="background: yellow"></div>
+          3 = Yellow
+        </div>
+        <div class="color-box">
+          <div class="swatch" style="background: green"></div>
+          4 = Green
+        </div>
+        <div class="color-box">
+          <div class="swatch" style="background: blue"></div>
+          5 = Blue
+        </div>
+        <div class="color-box">
+          <div class="swatch" style="background: indigo"></div>
+          6 = Indigo
+        </div>
+        <div class="color-box">
+          <div class="swatch" style="background: violet"></div>
+          7 = Violet
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <script>
+      let colors = [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "indigo",
+        "violet",
+      ];
+      let value = 0;
+      let ellipses = [];
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        background("#f5f5f5");
+      }
+
+      function draw() {
+        noStroke();
+        for (let e of ellipses) {
+          fill(e.color || "black");
+          ellipse(e.x, e.y, e.size);
+        }
+      }
+
+      function mouseDragged() {
+        ellipses.push({
+          x: mouseX,
+          y: mouseY,
+          size: 10,
+          color: colors[value],
+        });
+      }
+
+      function keyPressed() {
+        if (key === "1") value = 0;
+        if (key === "2") value = 1;
+        if (key === "3") value = 2;
+        if (key === "4") value = 3;
+        if (key === "5") value = 4;
+        if (key === "6") value = 5;
+        if (key === "7") value = 6;
+      }
+
+      function clearCanvas() {
+        ellipses = [];
+        background("#f5f5f5");
+      }
+    </script>
+  </body>
+</html>

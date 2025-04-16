@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 6</title>
+    <link rel="stylesheet" href="page.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="week1.html" class="tab-week1">Week 1</a>
+      <a href="week2.html" class="tab-week2">Week 2</a>
+      <a href="week3.html" class="tab-week3">Week 3</a>
+      <a href="week4.html" class="tab-week4">Week 4</a>
+      <a href="week5.html" class="tab-week5">Week 5</a>
+      <a href="week6.html" class="tab-week6 active">Week 6</a>
+      <a href="index.html" class="tab-home">Home</a>
+      <a href="about.html" class="tab-about">About</a>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Data in your Pocket</h2>
+        <p>
+          This was a group activity where we explored different ways of
+          visualising data. We began by emptying the contents of our bags and,
+          as a group, came up with a unique way to categorise the items. We
+          decided to sort them based on “how long we’d spend looking for the
+          item if we lost it.” The items were arranged in a circular pattern,
+          with the most important things placed at the center and the less
+          important ones radiating outward.
+        </p>
+        <p>
+          What made this activity really fun was realising just how many things
+          we all carry around without noticing. It also sparked some deeper
+          thinking: how many mundane things in our lives could be re-categorised
+          or reframed to tell a story? This experience made me appreciate how
+          even ordinary objects can gain meaning when viewed through a different
+          lens.
+        </p>
+      </div>
+      <div class="column">
+        <img
+          src="img/week6/data-in-your-pocket.jpeg"
+          alt="[data in your pocket"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Data Visualisation Pie-Chart</h2>
+        <p>
+          I created this pie chart as a simple example of data visualisation
+          using p5.js. It shows how much storage I’m using across my most-used
+          devices and platforms: my laptop, mobile, Google Drive, and iCloud.
+        </p>
+        <p>
+          To build the chart, I used a for loop to calculate the proportion of
+          each item and render it as a slice of the circle. I also added a
+          color-coded legend to make the data easier to read. Each section of
+          the pie represents the amount of storage used on that device or
+          service.
+        </p>
+        <p>
+          It was a fun way to visually reflect on just how much digital space I
+          occupy. This activity also helped me understand how to break data into
+          parts and represent it proportionally.
+        </p>
+        <p>Code Snippet:</p>
+        <pre><code class="language-javascript">
+            var storageLabels = ["Laptop", "Mobile", "Google Drive", "iCloud"];
+            var storageValues = [493.38, 200, 200, 200];
+            var storageColors;
+            
+            function setup() {
+              createCanvas(600, 500);
+              angleMode(DEGREES);
+            
+              storageColors = [
+                color(255, 100, 100),   
+                color(100, 150, 255),   
+                color(255, 200, 100),   
+                color(150, 255, 150)   
+              ];
+            }
+            
+            function draw() {
+              background(255);
+              translate(250, height / 2);
+            
+              let total = 0;
+              for (let i = 0; i < storageValues.length; i++) {
+                total += storageValues[i];
+              }
+            
+              let startAngle = 0;
+            
+              for (let i = 0; i < storageValues.length; i++) {
+                let value = storageValues[i];
+                let angle = (value / total) * 360;
+            
+                fill(storageColors[i]);
+                arc(0, 0, 300, 300, startAngle, startAngle + angle, PIE);
+            
+                startAngle += angle;
+              }
+            
+              translate(200, -150);
+              for (let i = 0; i < storageLabels.length; i++) {
+                fill(storageColors[i]);
+                rect(0, i * 30, 20, 20);
+                fill(0);
+                text(storageLabels[i], 30, i * 30 + 15);
+              }
+            
+              noLoop();
+            }
+            </code></pre>
+      </div>
+      <div class="column">
+        <img
+          src="img/week6/piechart.png"
+          alt="Pie Chart"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Dance Snippet</h2>
+        <p>
+          This sketch turns sound into movement using p5.js and the p5.Sound
+          library. A circle and the word “DANCE” react to the volume of a
+          looping audio track — growing, rotating, and following the mouse based
+          on sound input. The random “DANCE NOW” button adds a playful,
+          energetic touch. This was a fun way to explore sound as data and use
+          it to create interactive, expressive visuals.
+        </p>
+        <p>Code Snippet:</p>
+        <pre><code class="language-javascript">
+            var sound, analyzer, volume, myButton;
+            
+            function preload() {
+              sound = loadSound("data/bubble.mp3");
+            }
+            
+            function setup() {
+              createCanvas(windowWidth, windowHeight);
+              background("pink");
+              getAudioContext().suspend();
+              analyzer = new p5.Amplitude();
+              textAlign(CENTER, CENTER);
+              myButton = createButton("DANCE NOW");
+              myButton.position(random(width), random(height));
+            }
+            
+            function draw() {
+              background("pink");
+              volume = analyzer.getLevel();
+              mappedVol = map(volume, 0, 1.0, 0, width);
+              circle(mouseX, mouseY, mappedVol);
+            
+              push();
+              translate(width / 2, height / 2);
+              rotate(mappedVol);
+              textSize(mappedVol);
+              text("DANCE", 0, 0);
+              pop();
+            
+              console.log(volume + "|" + mappedVol);
+            }
+            
+            function mousePressed() {
+              getAudioContext().resume();
+              analyzer = new p5.Amplitude();
+              analyzer.setInput(sound);
+              loop();
+            
+              if (sound.isPlaying()) {
+                sound.stop();
+                sound.noLoop();
+              } else {
+                sound.play();
+                sound.loop();
+              }
+            }
+            
+            function keyPressed() {
+              if (key == "b") {
+                fill("blue");
+              }
+            }
+            </code></pre>
+      </div>
+      <div class="column">
+        <img
+          src="img/week6/dance-now.gif"
+          alt="Dance Now"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Hunt n Gather</h2>
+        <p>Population By Pixel:</p>
+        <p>
+          Population by Pixel campaign is a powerful example of data
+          visualization used for emotional impact. Each image shows an
+          endangered species, but instead of smooth gradients or high-res
+          detail, the photo is made up of individual pixels—each one
+          representing a single animal left in the wild.
+        </p>
+        <p>
+          I thought it was such a powerful way to turn numbers into something
+          you can feel. Seeing just a handful of pixels make up an entire animal
+          is impactful. It shows how creative data visualization can make you
+          care, not just understand.
+        </p>
+        <a
+          href="https://petapixel.com/2019/10/01/photos-of-endangered-species-where-every-pixel-represents-one-animal/"
+          target="_blank"
+          >Link to Website</a
+        >
+      </div>
+      <div class="column">
+        <img
+          src="img/week6/Hunt/sea-turtle.webp"
+          alt="Population By Pixel"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <p>Eat the Rich:</p>
+        <p>
+          1 Pixel Wealth was such a crazy yet simple way to show the scale of
+          wealth inequality. I love how it’s literally just pixels and names,
+          but it says so much. I like that it doesn’t over-explain anything-it
+          just lets the scroll do the talking. The fact that the scrolling
+          literally never ends really puts things into perspective for me.
+        </p>
+        <a
+          href="https://eattherichtextformat.github.io/1-pixel-wealth/"
+          target="_blank"
+          >Link to Website</a
+        >
+      </div>
+      <div class="column">
+        <img
+          src="img/week6/Hunt/eat-the-rich.gif"
+          alt="Eat the Rich"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <p>Dear Data:</p>
+        <p>
+          Dear Data changed the way I think about data visualization. I love how
+          Giorgia Lupi and Stefanie Posavec turned something so analytical into
+          something emotional and hand drawn. I like the idea that data doesn’t
+          have to be digital or polished, it can be messy, expressive, and full
+          of feeling. I also liked how each week’s topic became such a unique
+          form of reflection.
+        </p>
+        <a href="https://www.dear-data.com/theproject" target="_blank"
+          >Link to Website</a
+        >
+      </div>
+      <div class="column">
+        <img
+          src="img/week6/Hunt/data.png"
+          alt="Dear Data:"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+  </body>
+</html>

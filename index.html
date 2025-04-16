@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tashya's Workbook</title>
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: black;
+        font-family: "owners-wide", sans-serif;
+        overflow: hidden;
+      }
+      #enter-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #111199;
+        color: white;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: opacity 0.5s ease;
+      }
+
+      #enter-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+        background-color: #e0e0e0;
+        color: black;
+        border: 2px solid #aaa;
+        border-radius: 12px;
+        font-family: "owners-wide", sans-serif;
+        cursor: pointer;
+        box-shadow: inset -2px -2px 0 #fff, inset 2px 2px 0 #888;
+        transition: all 0.1s ease;
+      }
+
+      #enter-btn:hover {
+        background-color: #cfcfcf;
+        color: black;
+        box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #888;
+      }
+      .folder-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      #main-folder {
+        width: 220px;
+        cursor: pointer;
+        animation: floatMain 12s infinite ease-in-out;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: auto;
+      }
+      #main-folder:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+        filter: drop-shadow(0 0 10px rgba(121, 254, 11, 0.9));
+      }
+      .file {
+        position: absolute;
+        width: 100px;
+        opacity: 0;
+        pointer-events: auto;
+      }
+      .folder-container.active .file {
+        opacity: 1;
+      }
+      .file-icon {
+        width: 100%;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+      .file-icon:hover {
+        filter: drop-shadow(0 0 10px rgba(121, 254, 11, 0.9));
+        transform: scale(1.05);
+      }
+      @keyframes floatMain {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -55%) scale(1.02);
+        }
+      }
+
+      #notepad-popup {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        background: #fffecf;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        width: 250px;
+        cursor: move;
+      }
+
+      #notepad-text {
+        width: 100%;
+        height: 160px;
+        border: none;
+        background: transparent;
+        font-family: monospace;
+        font-size: 14px;
+        resize: none;
+        outline: none;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      #notepad-popup button {
+        margin-top: 10px;
+        background: black;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "owners-wide", sans-serif;
+      }
+
+      #notepad-popup button:hover {
+        background: #79fe0c;
+        color: black;
+        font-family: "owners-wide", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="enter-screen">
+      <button id="enter-btn">Enter Workbook</button>
+    </div>
+    <div id="notepad-popup">
+      <textarea id="notepad-text" placeholder="Write something..."></textarea>
+      <button onclick="hideNotepad()">Close</button>
+    </div>
+    <div class="folder-container">
+      <img
+        src="img/folders/workbook.folder.png"
+        id="main-folder"
+        alt="Main Folder"
+      />
+      <div class="file">
+        <a href="week1.html"
+          ><img src="img/folders/week1.folder.png" class="file-icon"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="week2.html"
+          ><img src="img/folders/week2.folder.png" class="file-icon"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="week3.html"
+          ><img src="img/folders/week3.folder.png" class="file-icon"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="week4.html"
+          ><img src="img/folders/week4.folder.png" class="file-icon"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="week5.html"
+          ><img src="img/folders/week5.folder.png" class="file-icon"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="week6.html"
+          ><img src="img/folders/week6.folder.png" class="file-icon"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="webcam.html"
+          ><img src="img/webcam.png" class="file-icon" style="cursor: pointer"
+        /></a>
+      </div>
+      <div class="file">
+        <a href="paint.html"
+          ><img src="img/paint.png" class="file-icon" style="cursor: pointer"
+        /></a>
+      </div>
+      <div class="file">
+        <img
+          src="img/notepad.png"
+          class="file-icon"
+          id="notepad-icon"
+          alt="Notepad Icon"
+          style="cursor: pointer"
+        />
+      </div>
+      <div class="file">
+        <a href="about.html"
+          ><img src="img/About.png" class="file-icon" style="cursor: pointer"
+        /></a>
+      </div>
+    </div>
+    <audio id="click-sound" src="audio/click.mp3" preload="auto"></audio>
+    <audio id="pop-sound" src="audio/click.mp3" preload="auto"></audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js"></script>
+    <script>
+      let cols, rows;
+      let spacing = 5;
+      let grid = [];
+      let song;
+      let fft;
+
+      function preload() {
+        song = loadSound("audio/ppp.m.mp3");
+      }
+
+      function setup() {
+        let cnv = createCanvas(windowWidth, windowHeight);
+        cnv.position(0, 0);
+        cnv.style("z-index", "-1");
+        cnv.style("position", "fixed");
+
+        fft = new p5.FFT();
+
+        noFill();
+        stroke("#ffffff");
+        strokeWeight(0.2);
+
+        cols = ceil(width / spacing) + 2;
+        rows = ceil(height / spacing) + 2;
+
+        for (let x = 0; x < cols; x++) {
+          grid[x] = [];
+          for (let y = 0; y < rows; y++) {
+            grid[x][y] = createVector(x * spacing, y * spacing);
+          }
+        }
+      }
+
+      function draw() {
+        background("#111199");
+
+        let volume = map(mouseX, 0, width, 0.0, 1.0);
+        if (song.isPlaying()) {
+          song.setVolume(constrain(volume, 0, 1));
+        }
+
+        let time = millis() * 0.001;
+        let distToCenter = dist(mouseX, mouseY, width / 2, height / 2);
+        let centerBoost = map(distToCenter, 0, width / 2, 2.5, 0.3);
+
+        for (let x = 0; x < cols; x++) {
+          for (let y = 0; y < rows; y++) {
+            let baseX = x * spacing;
+            let baseY = y * spacing;
+            let d = dist(mouseX, mouseY, baseX, baseY);
+            let hoverEffect = constrain(map(d, 0, 75, 0.7, 0), 0, 2);
+            let totalStrength =
+              (0.15 + hoverEffect) * centerBoost * map(mouseX, 0, width, 1, 3);
+            let offsetX =
+              noise(x * 0.15, y * 0.15, time) * totalStrength * 80 -
+              totalStrength * 40;
+            let offsetY =
+              noise(y * 0.15, x * 0.15, time + 100) * totalStrength * 80 -
+              totalStrength * 40;
+            grid[x][y].x = baseX + offsetX;
+            grid[x][y].y = baseY + offsetY;
+          }
+        }
+
+        for (let y = 0; y < rows; y++) {
+          beginShape();
+          for (let x = 0; x < cols; x++) {
+            vertex(grid[x][y].x, grid[x][y].y);
+          }
+          endShape();
+        }
+        for (let x = 0; x < cols; x++) {
+          beginShape();
+          for (let y = 0; y < rows; y++) {
+            vertex(grid[x][y].x, grid[x][y].y);
+          }
+          endShape();
+        }
+      }
+
+      function floatRandomly(element) {
+        let posX = Math.random() * (window.innerWidth - 120);
+        let posY = Math.random() * (window.innerHeight - 120);
+        let velX = (Math.random() - 0.5) * 1.2;
+        let velY = (Math.random() - 0.5) * 1.2;
+
+        element.style.left = `${posX}px`;
+        element.style.top = `${posY}px`;
+
+        setInterval(() => {
+          posX += velX;
+          posY += velY;
+
+          if (posX <= 0 || posX + element.offsetWidth >= window.innerWidth)
+            velX *= -1;
+          if (posY <= 0 || posY + element.offsetHeight >= window.innerHeight)
+            velY *= -1;
+
+          element.style.left = `${posX}px`;
+          element.style.top = `${posY}px`;
+        }, 30);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const enterBtn = document.getElementById("enter-btn");
+        const enterScreen = document.getElementById("enter-screen");
+        const clickSound = document.getElementById("click-sound");
+        const popSound = document.getElementById("pop-sound");
+        const mainFolder = document.getElementById("main-folder");
+        const container = document.querySelector(".folder-container");
+        const files = document.querySelectorAll(".file");
+        const notepadIcon = document.getElementById("notepad-icon");
+        const notepadPopup = document.getElementById("notepad-popup");
+        const notepadText = document.getElementById("notepad-text");
+
+        enterBtn.addEventListener("click", () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+
+          if (!song.isPlaying()) {
+            song.loop();
+            song.setVolume(0.3);
+          }
+
+          enterScreen.style.opacity = "0";
+          setTimeout(() => {
+            enterScreen.style.display = "none";
+          }, 500);
+        });
+
+        mainFolder.addEventListener("click", () => {
+          container.classList.toggle("active");
+          popSound.currentTime = 0;
+          popSound.play();
+
+          if (container.classList.contains("active")) {
+            files.forEach((file) => floatRandomly(file));
+          }
+        });
+
+        document.querySelectorAll(".file a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            clickSound.currentTime = 0;
+            clickSound.play();
+            const href = link.getAttribute("href");
+            setTimeout(() => {
+              window.location.href = href;
+            }, 250);
+          });
+        });
+
+        notepadIcon.addEventListener("click", () => {
+          notepadPopup.style.display = "block";
+          notepadText.value = localStorage.getItem("notepadData") || "";
+        });
+
+        notepadText.addEventListener("input", () => {
+          localStorage.setItem("notepadData", notepadText.value);
+        });
+
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        notepadPopup.addEventListener("mousedown", (e) => {
+          if (e.target.tagName === "TEXTAREA" || e.target.tagName === "BUTTON")
+            return;
+          isDragging = true;
+          offsetX = e.clientX - notepadPopup.getBoundingClientRect().left;
+          offsetY = e.clientY - notepadPopup.getBoundingClientRect().top;
+          notepadPopup.style.cursor = "grabbing";
+        });
+
+        document.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          notepadPopup.style.left = `${e.clientX - offsetX}px`;
+          notepadPopup.style.top = `${e.clientY - offsetY}px`;
+          notepadPopup.style.bottom = "auto";
+          notepadPopup.style.right = "auto";
+        });
+
+        document.addEventListener("mouseup", () => {
+          isDragging = false;
+          notepadPopup.style.cursor = "move";
+        });
+      });
+
+      function hideNotepad() {
+        document.getElementById("notepad-popup").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

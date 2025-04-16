@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEEK 5</title>
+
+    <link rel="stylesheet" href="page.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="week1.html" class="tab-week1">Week 1</a>
+      <a href="week2.html" class="tab-week2">Week 2</a>
+      <a href="week3.html" class="tab-week3">Week 3</a>
+      <a href="week4.html" class="tab-week4">Week 4</a>
+      <a href="week5.html" class="tab-week5 active">Week 5</a>
+      <a href="week6.html" class="tab-week6">Week 6</a>
+      <a href="index.html" class="tab-home">Home</a>
+      <a href="about.html" class="tab-about">About</a>
+    </div>
+
+    <h1>Week 5</h1>
+
+    <div class="container">
+      <div class="column">
+        <h2>Paint an Image</h2>
+        <p>
+          In this sketch, I explored how an image can be used like a paintbrush
+          in p5.js. As I moved the mouse across the canvas, the image would
+          duplicate and follow the cursor, creating a trail of visual texture.
+          It reminded me of digital stamping or collage-making, every movement
+          left a mark that built up a composition over time.
+        </p>
+        <p>
+          I used two images in this experiment. When the mouse is pressed, one
+          image appears, and when it’s not, the other one is used. This simple
+          switch made the interaction feel more dynamic and playful — almost
+          like I was toggling between two brushes or layers.
+        </p>
+        <p>
+          This exercise taught me how versatile image() can be when used
+          creatively. It also helped me understand how conditional statements
+          (if/else) can be used to control interactivity.
+        </p>
+        <p>Code Snippet</p>
+        <pre><code>
+            var img, img2;
+            
+            function preload() {
+              img = loadImage("data/img.jpeg");
+              img2 = loadImage("data/logo.jpeg");
+            }
+            
+            function setup() {
+              createCanvas(windowWidth, windowHeight);
+            }
+            
+            function draw() {
+              if (mouseIsPressed) {
+                image(img, mouseX - 50, mouseY - 50, 100, 100 / img.width * img.height);
+              } else {
+                image(img2, mouseX - 50, mouseY - 50, 100, 100 / img.width * img.height);
+              }
+            }
+            </code></pre>
+      </div>
+      <div class="column">
+        <img
+          src="img/Week5/point-image.gif"
+          alt="Point-Image"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Text to Point</h2>
+        <p>
+          In this sketch, I used textToPoints() to break up the phrase Les
+          Points into individual coordinates and drew circles at each point. As
+          the mouse moves across the screen, the size of the circles changes.
+          This gave the text a dynamic, pulsing feel.
+        </p>
+        <p>
+          It actually inspired the way I approached interactivity on my
+          homepage, specifically how I mapped mouse position to control the
+          volume of sound. I liked how subtle cursor movement could change the
+          experience in real time.
+        </p>
+        <p>Code Snippet:</p>
+        <pre><code class="code-block">
+let font;
+let points = [];
+
+function preload() {
+  font = loadFont('https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/font/SourceCodePro-Regular.otf');
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(160, 0, 160);
+
+  const fontSize = 144;
+  const bounds = font.textBounds("Les Points", 0, 0, fontSize);
+
+  const x = width / 2 - bounds.w / 2;
+  const y = height / 2 + bounds.h / 2;
+
+  points = font.textToPoints("Les Points", x, y, fontSize, {
+    sampleFactor: 0.2,
+  });
+}
+
+function draw() {
+  background(160, 0, 160);
+  let xMapped = map(mouseX, 0, width, 4, 32);
+
+  for (let p of points) {
+    noStroke();
+    fill(160);
+    circle(p.x, p.y, xMapped);
+  }
+}
+</code></pre>
+      </div>
+      <div class="column">
+        <img
+          src="img/Week5/les-points-wk-5.gif"
+          alt="Point to Text"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Webcam Experiment</h2>
+        <p>
+          I played around with how a webcam could be used to add fun
+          interactivity. Instead of just showing the live feed, I added a
+          posterize filter to give it a more stylised, graphic look, kind of
+          like a digital stencil effect. I later incorporated this idea into my
+          homepage to make the experience feel more personal and playful.
+        </p>
+        <p>Code Snippet:</p>
+        <pre><code>
+var capture;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  capture = createCapture(VIDEO);
+  capture.size(640, 480);
+  capture.hide();
+}
+
+function draw() {
+  background(255);
+  image(capture, width / 2 - 320, height / 2 - 240, 640, 480);
+  filter(POSTERIZE, 4);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</code></pre>
+      </div>
+      <div class="column">
+        <img src="img/Week5/webcam.gif" alt="Webcam" class="img-responsive" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Dot to Dot</h2>
+        <p>
+          This was another fun experiment using one of the code snippets from
+          the week 5 module. I didn’t change much, but just playing around with
+          it showed me how even a super simple sketch can add personality to a
+          webpage. It tracks your mouse and adds a counter every time you press
+          a key, it really brings the screen to life in a fun way.
+        </p>
+        <p>Code Snippet:</p>
+        <pre><code>
+var counter;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(255, 255, 255);
+  counter = 0;
+  textSize(20);
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    strokeWeight(10);
+    stroke(255, 0, 0);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+  }
+}
+
+function keyPressed() {
+  counter++;
+  fill(0);
+  circle(mouseX, mouseY, 5);
+  text(counter, mouseX, mouseY);
+}
+</code></pre>
+      </div>
+      <div class="column">
+        <img
+          src="img/Week5/dot-to-dot-wk5.gif"
+          alt="Dot-to-Dot"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Hunt n Gather</h2>
+        <p>BlockDust:</p>
+
+        <p>
+          Blokdust was such a fun experience. I love that every interaction
+          feels unique—the outcome is never exactly the same. It gives the user
+          so much creative freedom, and the interface makes it really easy to
+          experiment. The graphics are super cool, and I really like the way all
+          the elements fit and sit together on the screen. It feels playful,
+          intuitive, and just really satisfying to use.
+        </p>
+        <a href="https://www.blokdust.com/" target="_blank">Link to Website</a>
+      </div>
+      <div class="column">
+        <img
+          src="img/Week5/Hunt/blockdust.png"
+          alt="BlockDust Graphic"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <p>Mathias Dörfelt Illustrations:</p>
+        <p>
+          Computer-generated images have a certain aesthetic to them that makes
+          them immediately recognizable as such by the trained eye.” Mathias
+          Dörfelt uses programming to generate unique, expressive faces that
+          look like hand-drawn illustrations. I really love this because I’m
+          drawn to line art and quirky, character-filled drawings. I didn’t
+          realize it was possible to create so much personality and variation in
+          faces through code. It’s such a cool mix of technical and artistic
+          creativity.
+        </p>
+        <a href="[link]" target="_blank">Link to Website</a>
+      </div>
+      <div class="column">
+        <img
+          src="img/Week5/Hunt/mathias.png"
+          alt="Mathias Dörfelt Illustrations"
+          class="img-responsive"
+        />
+      </div>
+    </div>
+  </body>
+</html>

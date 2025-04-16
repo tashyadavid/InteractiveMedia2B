@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Webcam View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <style>
+      body {
+        margin: 0;
+        background: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "owners-wide", sans-serif;
+      }
+      #back-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #79fe0c;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: background 0.2s;
+        font-family: "owners-wide", sans-serif;
+      }
+      #back-btn:hover {
+        background: blue;
+        font-family: "owners-wide", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <script>
+      let capture;
+
+      function setup() {
+        createCanvas(800, 600);
+        capture = createCapture(VIDEO);
+        capture.size(windowWidth, windowHeight);
+        capture.hide();
+      }
+
+      function draw() {
+        background(0);
+        image(capture, 0, 0, width, height);
+        filter(POSTERIZE, 4);
+      }
+    </script>
+
+    <button id="back-btn" onclick="window.location.href='index.html'">
+      Back to Home
+    </button>
+  </body>
+</html>
