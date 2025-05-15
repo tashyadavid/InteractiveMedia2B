@@ -9,255 +9,561 @@
     <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
   </head>
   <body>
-    <div class="navbar">
-      <a href="week1.html">Week 1</a>
-      <a href="week2.html">Week 2</a>
-      <a href="week3.html">Week 3</a>
-      <a href="week4.html">Week 4</a>
-      <a href="week5.html">Week 5</a>
-      <a href="week6.html">Week 6</a>
-      <a href="week7.html" class="active">Week 7</a>
-      <a href="week8.html">Week 8</a>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-    </div>
-    <div class="container">
-      <div class="column">
-        <h1>Week 7</h1>
-        <h2>Arduino Kit</h2>
-        <p>
-          This week we explored Arduino and learned about all the components in
-          the Arduino kit, what each one is used for, and different ways to use
-          them. It was interesting to see how far physical computing could
-          actually go. One of the Telstra Space members showed us his project
-          called Moth to the Flame, which was so cool to see. It was really
-          poetic and so intricate, and it was interesting to see what was
-          possible with physical computing.
-        </p>
-      </div>
-      <div class="column">
-        <img
-          src="img/Week7/Arduino-Kit.jpeg"
-          alt="Arduino Kit"
-          class="img-responsive"
-        />
-      </div>
-    </div>
-    <div class="container">
-      <div class="column">
-        <h2>Using Arduino to Power an LED Light</h2>
-        <p>
-          This was one of the first circuits we built using just the Arduino as
-          a power source, without writing any code. It was a simple setup with a
-          button, resistor, and LED, but it helped me understand how electricity
-          flows through a circuit. Pressing the button completed the circuit and
-          lit up the LED, which made the whole thing feel really hands-on and
-          physical. It was a good way to start thinking about how input and
-          output works, even before introducing code. I realised how important
-          it is to understand the hardware side, not just the programming.
-        </p>
-      </div>
-      <div class="column">
-        <img
-          src="img/Week7/light-up-button.png"
-          alt="Arduino Kit"
-          class="img-responsive"
-        />
-        <video
-          src="img/Week7/Button-Led.mp4"
-          controls
-          class="video-responsive"
-        ></video>
-      </div>
-    </div>
-    <div class="container">
-      <div class="column">
-        <h2>Arduino and a potentiometer to control an LED light</h2>
-        <p>
-          The potentiometer let us change the brightness in real time, kind of
-          like a dimmer switch. It was interesting to see how turning a knob
-          could be translated into both code and electrical output. It made it
-          really clear how analog input can control output in a physical way.
-          This helped me understand how sensors and inputs work with hardware
-          and software to create interactive experiences.
-        </p>
-        <p>Code Snippet:</p>
-        <pre><code class="language-javascript">
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Week 7</title>
+        <link rel="stylesheet" href="page.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
+      </head>
+      <body>
+        <div class="folder-page">
+          <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="week1.html">Week 1</a>
+            <a href="week2.html">Week 2</a>
+            <a href="week3.html">Week 3</a>
+            <a href="week4.html">Week 4</a>
+            <a href="week5.html">Week 5</a>
+            <a href="week6.html">Week 6</a>
+            <a href="week7.html" class="active">Week 7</a>
+            <a href="week8.html">Week 8</a>
+
+            <a href="about.html">About</a>
+          </div>
+
+          <div class="container">
+            <div class="column">
+              <h1>Week 7</h1>
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <h2>Arduino Kit</h2>
+              <p>
+                This week we explored Arduino and learned about all the
+                components in the Arduino kit, what each one is used for, and
+                different ways to use them. It was interesting to see how far
+                physical computing could actually go. One of the Telstra Space
+                members showed us his project called Moth to the Flame, which
+                was so cool to see. It was really poetic and so intricate, and
+                it was interesting to see what was possible with physical
+                computing.
+              </p>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/Arduino-Kit.jpeg"
+                alt="Arduino Kit"
+                class="img-responsive"
+              />
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <h2>Using Arduino to Power an LED Light</h2>
+              <p>
+                This was one of the first circuits we built using just the
+                Arduino as a power source, without writing any code. It was a
+                simple setup with a button, resistor, and LED, but it helped me
+                understand how electricity flows through a circuit. Pressing the
+                button completed the circuit and lit up the LED, which made the
+                whole thing feel really hands-on and physical. It was a good way
+                to start thinking about how input and output works, even before
+                introducing code. I realised how important it is to understand
+                the hardware side, not just the programming.
+              </p>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/light-up-button.png"
+                alt="Arduino Kit"
+                class="img-responsive"
+              />
+              <video
+                src="img/Week7/Button-Led.mp4"
+                controls
+                class="video-responsive"
+              ></video>
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <h2>Arduino and a potentiometer to control an LED light</h2>
+              <p>
+                The potentiometer let us change the brightness in real time,
+                kind of like a dimmer switch. It was interesting to see how
+                turning a knob could be translated into both code and electrical
+                output. It made it really clear how analog input can control
+                output in a physical way. This helped me understand how sensors
+                and inputs work with hardware and software to create interactive
+                experiences.
+              </p>
+              <p>Code Snippet:</p>
+              <pre><code class="language-javascript">
             int ledPin = 11;
-int ledBrightness = 0;
+            int ledBrightness = 0;
+                
+            int potPin = A0;
+            int potVal = 0;
+                
+            void setup() {
+              pinMode(ledPin, OUTPUT);
+            }
+                
+            void loop() {
+              potVal = analogRead(potPin);
+              ledBrightness = potVal / 4;
+              analogWrite(ledPin, ledBrightness);
+              delay(10);
+            }
+             </code></pre>
+            </div>
+            <div class="column">
+              <img src="img/Week7/Potentiometer.png" class="img-responsive" />
+              <video
+                src="img/Week7/potentiometer.mp4"
+                controls
+                class="video-responsive"
+              ></video>
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <h2>Ultrasonic Sensor with a Buzzer</h2>
+              <p>
+                We worked with an ultrasonic distance sensor and a buzzer, where
+                the buzzer would go off if someone was in close proximity. It
+                was really interesting to see it react in real time, and it made
+                me realise how much everyday technology works in a similar way.
+                I also started to see how physical computing could be used
+                creatively. Even something as simple as a buzzer could feel
+                emotional or symbolic, depending on the context. It was fun to
+                build, and even when it didn’t work at first, the hands-on trial
+                and error helped everything make more sense.
+              </p>
+              <p>Code Snippet:</p>
+              <pre><code class="language-javascript">
+                int trigPin = 11;
+                int echoPin = 12;
+                int buzzPin = 2;
+                
+                void setup() {
+                  pinMode(trigPin, OUTPUT);
+                  pinMode(echoPin, INPUT);
+                  pinMode(buzzPin, OUTPUT);
+                }
+                
+                void loop() {
+                  int duration, distance;
+                  digitalWrite(trigPin, HIGH);
+                  delay(1);
+                  digitalWrite(trigPin, LOW);
+                  duration = pulseIn(echoPin, HIGH);
+                  distance = (duration / 2) / 29.1;
+                
+                  if (distance <= 50 && distance >= 0) {
+                    tone(buzzPin, 120, 500);
+                  } else {
+                    digitalWrite(buzzPin, 0);
+                  }
+                
+                  delay(60);
+                }
+                    </code></pre>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/capacitative-sensor.png"
+                alt="Sensor"
+                class="img-responsive"
+              />
+              <video
+                src="img/Week7/Ultrasonic-Sensor.mp4"
+                controls
+                class="video-responsive"
+              ></video>
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <h2>Other Explorations</h2>
+              <p>Overstimulated:</p>
+              <p>
+                I was inspired by how the ultrasonic sensor and buzzer worked
+                together in class. It sparked the idea for an art piece I call
+                <em>“Overstimulated.”</em> As the user approaches the sensor,
+                the installation would emit an increasingly loud and repetitive
+                beeping sound. It would continue until the user steps away. This
+                could be enhanced with flashing lights or overwhelming visuals
+                to evoke the intense, often chaotic feeling of being
+                overstimulated— especially in crowded or socially intense
+                environments. The goal is to create an experience that makes the
+                emotional state physically and sensorially tangible.
+              </p>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/Overstimulated.jpeg"
+                alt="Overstimulated"
+                class="img-responsive"
+              />
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <h2>Hunt n Gather</h2>
+              <p>Pulse Room by Rafael Lozano-Hemmer</p>
+              <p>
+                I thought it was such a powerful way to turn numbers into
+                something you can feel. Seeing just a handful of pixels make up
+                an entire animal is impactful. It shows how creative data
+                visualization can make you care, not just understand.
+              </p>
+              <a
+                href="https://www.lozano-hemmer.com/pulse_room.php"
+                target="_blank"
+                class="glow-link"
+              >
+                Link to Website
+              </a>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/Light-Pulse.jpg"
+                alt="Pulse Room"
+                class="img-responsive"
+              />
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <p>Can’t Help Myself by Sun Yuan and Peng Yu:</p>
+              <p>
+                Can’t Help Myself was so unsettling but also weirdly
+                captivating. Watching the robotic arm constantly try to contain
+                the red liquid felt like watching something painfully human. It
+                was stuck in this endless loop of cleaning up its own mess. It
+                made me think about control, failure, and how exhausting it is
+                to try and keep everything together. Even though it’s just a
+                machine, it almost felt alive. I like how physical computing was
+                used to create something so emotional, something that made
+                people stop and actually feel something.
+              </p>
+              <a
+                href="https://www.guggenheim.org/artwork/34812"
+                target="_blank"
+                class="glow-link"
+              >
+                Link to Website
+              </a>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/sun-yuan.jpg"
+                alt="Cant help myself"
+                class="img-responsive"
+              />
+            </div>
+          </div>
+          <div class="container">
+            <div class="column">
+              <p>Murder Machine by Diego Zaks:</p>
+              <p>
+                This was an interesting piece because it looks so simple at
+                first, but it draws you in as you realise what it’s actually
+                doing. It auto-generates and prints out the details of murders
+                happening in Venezuela every 20 minutes. It made the violence
+                feel constant and mechanical, like it had become so normalised.
+                The idea to make the machine feed receipts was also really
+                powerful. It made the information feel disposable, which says a
+                lot about how numb people have become to tragedy. The whole
+                piece really stuck with me.
+              </p>
+              <a
+                href="https://www.behance.net/gallery/27975357/Murder-Machine"
+                target="_blank"
+                class="glow-link"
+              >
+                Link to Website
+              </a>
+            </div>
+            <div class="column">
+              <img
+                src="img/Week7/Murder-Machine.png"
+                alt="Murder Machine"
+                class="img-responsive"
+              />
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
 
-int potPin = A0;
-int potVal = 0;
-
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
-  potVal = analogRead(potPin);
-  ledBrightness = potVal / 4;
-  analogWrite(ledPin, ledBrightness);
-  delay(10);
-}
-            </code></pre>
+    <div class="folder-page">
+      <div class="container">
+        <div class="column">
+          <h1>Week 7</h1>
+        </div>
       </div>
-      <div class="column">
-        <img
-          src="img/Week7/Potentiometer.png"
-          alt="Arduino Kit"
-          class="img-responsive"
-        />
-        <video
-          src="img/Week7/potentiometer.mp4"
-          controls
-          class="video-responsive"
-        ></video>
+      <div class="container">
+        <div class="column">
+          <h2>Arduino Kit</h2>
+          <p>
+            This week we explored Arduino and learned about all the components
+            in the Arduino kit, what each one is used for, and different ways to
+            use them. It was interesting to see how far physical computing could
+            actually go. One of the Telstra Space members showed us his project
+            called Moth to the Flame, which was so cool to see. It was really
+            poetic and so intricate, and it was interesting to see what was
+            possible with physical computing.
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/Arduino-Kit.jpeg"
+            alt="Arduino Kit"
+            class="img-responsive"
+          />
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="column">
-        <h2>Capacitive Sensor with a Buzzer</h2>
-        <p>
-          We worked with a capacitive sensor and a buzzer, where the buzzer
-          would go off if someone was in close proximity to it. It was really
-          interesting to see it react in real time, and it made me realise how
-          much everyday technology works in a similar way. I also started to see
-          how physical computing could be used creatively. Even something as
-          simple as a buzzer could feel emotional or symbolic, depending on the
-          context. It was fun to build, and even when it didn’t work at first,
-          the hands-on trial and error helped everything make more sense.
-        </p>
-        <p>Code Snippet:</p>
-        <pre><code class="language-javascript">
-            int const trigPin = 11;
-int const echoPin = 12;
-int const buzzPin = 2;
-
-void setup()
-{
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(buzzPin, OUTPUT);
-}
-
-void loop()
-{
-  int duration, distance;
-
-  digitalWrite(trigPin, HIGH);
-  delay(1);
-  digitalWrite(trigPin, LOW);
-  
-  duration = pulseIn(echoPin, HIGH);
-  distance = (duration / 2) / 29.1;
-  
-  if (distance <= 50 && distance >= 0) {
-    tone(buzzPin, 120, 500);
-  } 
-  else {
-    digitalWrite(buzzPin, 0);
-  }
-
-  delay(60);
-}
-
-        </code></pre>
+      <div class="container">
+        <div class="column">
+          <h2>Using Arduino to Power an LED Light</h2>
+          <p>
+            This was one of the first circuits we built using just the Arduino
+            as a power source, without writing any code. It was a simple setup
+            with a button, resistor, and LED, but it helped me understand how
+            electricity flows through a circuit. Pressing the button completed
+            the circuit and lit up the LED, which made the whole thing feel
+            really hands-on and physical. It was a good way to start thinking
+            about how input and output works, even before introducing code. I
+            realised how important it is to understand the hardware side, not
+            just the programming.
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/light-up-button.png"
+            alt="Arduino Kit"
+            class="img-responsive"
+          />
+          <video
+            src="img/Week7/Button-Led.mp4"
+            controls
+            class="video-responsive"
+          ></video>
+        </div>
       </div>
-      <div class="column">
-        <img
-          src="img/Week7/capacitative-sensor.png"
-          alt="Arduino Kit"
-          class="img-responsive"
-        />
-        <video
-          src="img/Week7/Ultrasonic-Sensor.mp4"
-          controls
-          class="video-responsive"
-        ></video>
+      <div class="container">
+        <div class="column">
+          <h2>Arduino and a potentiometer to control an LED light</h2>
+          <p>
+            The potentiometer let us change the brightness in real time, kind of
+            like a dimmer switch. It was interesting to see how turning a knob
+            could be translated into both code and electrical output. It made it
+            really clear how analog input can control output in a physical way.
+            This helped me understand how sensors and inputs work with hardware
+            and software to create interactive experiences.
+          </p>
+          <p>Code Snippet:</p>
+          <pre><code class="language-javascript">
+        int ledPin = 11;
+        int ledBrightness = 0;
+            
+        int potPin = A0;
+        int potVal = 0;
+            
+        void setup() {
+          pinMode(ledPin, OUTPUT);
+        }
+            
+        void loop() {
+          potVal = analogRead(potPin);
+          ledBrightness = potVal / 4;
+          analogWrite(ledPin, ledBrightness);
+          delay(10);
+        }
+         </code></pre>
+        </div>
+        <div class="column">
+          <img src="img/Week7/Potentiometer.png" class="img-responsive" />
+          <video
+            src="img/Week7/potentiometer.mp4"
+            controls
+            class="video-responsive"
+          ></video>
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="column">
-        <h2>Hunt n Gather</h2>
-        <p>Pulse Room by Rafael Lozano-Hemmer</p>
-        <p>
-          I thought it was such a powerful way to turn numbers into something
-          you can feel. Seeing just a handful of pixels make up an entire animal
-          is impactful. It shows how creative data visualization can make you
-          care, not just understand.
-        </p>
-        <a
-          href="https://www.lozano-hemmer.com/pulse_room.php"
-          target="_blank"
-          class="glow-link"
-        >
-          Link to Website
-        </a>
+      <div class="container">
+        <div class="column">
+          <h2>Ultrasonic Sensor with a Buzzer</h2>
+          <p>
+            We worked with an ultrasonic distance sensor and a buzzer, where the
+            buzzer would go off if someone was in close proximity. It was really
+            interesting to see it react in real time, and it made me realise how
+            much everyday technology works in a similar way. I also started to
+            see how physical computing could be used creatively. Even something
+            as simple as a buzzer could feel emotional or symbolic, depending on
+            the context. It was fun to build, and even when it didn’t work at
+            first, the hands-on trial and error helped everything make more
+            sense.
+          </p>
+          <p>Code Snippet:</p>
+          <pre><code class="language-javascript">
+            int trigPin = 11;
+            int echoPin = 12;
+            int buzzPin = 2;
+            
+            void setup() {
+              pinMode(trigPin, OUTPUT);
+              pinMode(echoPin, INPUT);
+              pinMode(buzzPin, OUTPUT);
+            }
+            
+            void loop() {
+              int duration, distance;
+              digitalWrite(trigPin, HIGH);
+              delay(1);
+              digitalWrite(trigPin, LOW);
+              duration = pulseIn(echoPin, HIGH);
+              distance = (duration / 2) / 29.1;
+            
+              if (distance <= 50 && distance >= 0) {
+                tone(buzzPin, 120, 500);
+              } else {
+                digitalWrite(buzzPin, 0);
+              }
+            
+              delay(60);
+            }
+                </code></pre>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/capacitative-sensor.png"
+            alt="Sensor"
+            class="img-responsive"
+          />
+          <video
+            src="img/Week7/Ultrasonic-Sensor.mp4"
+            controls
+            class="video-responsive"
+          ></video>
+        </div>
       </div>
-      <div class="column">
-        <img
-          src="img/Week7/Light-Pulse.jpg"
-          alt="Pulse Room"
-          class="img-responsive"
-        />
+      <div class="container">
+        <div class="column">
+          <h2>Other Explorations</h2>
+          <p>Overstimulated:</p>
+          <p>
+            I was inspired by how the ultrasonic sensor and buzzer worked
+            together in class. It sparked the idea for an art piece I call
+            <em>“Overstimulated.”</em> As the user approaches the sensor, the
+            installation would emit an increasingly loud and repetitive beeping
+            sound. It would continue until the user steps away. This could be
+            enhanced with flashing lights or overwhelming visuals to evoke the
+            intense, often chaotic feeling of being overstimulated— especially
+            in crowded or socially intense environments. The goal is to create
+            an experience that makes the emotional state physically and
+            sensorially tangible.
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/Overstimulated.jpeg"
+            alt="Overstimulated"
+            class="img-responsive"
+          />
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="column">
-        <p>Can’t Help Myself by Sun Yuan and Peng Yu:</p>
-        <p>
-          Can’t Help Myself was so unsettling but also weirdly captivating.
-          Watching the robotic arm constantly try to contain the red liquid felt
-          like watching something painfully human. It was stuck in this endless
-          loop of cleaning up its own mess. It made me think about control,
-          failure, and how exhausting it is to try and keep everything together.
-          Even though it’s just a machine, it almost felt alive. I like how
-          physical computing was used to create something so emotional,
-          something that made people stop and actually feel something.
-        </p>
-        <a
-          href="https://www.guggenheim.org/artwork/34812"
-          target="_blank"
-          class="glow-link"
-        >
-          Link to Website
-        </a>
+      <div class="container">
+        <div class="column">
+          <h2>Hunt n Gather</h2>
+          <p>Pulse Room by Rafael Lozano-Hemmer</p>
+          <p>
+            I thought it was such a powerful way to turn numbers into something
+            you can feel. Seeing just a handful of pixels make up an entire
+            animal is impactful. It shows how creative data visualization can
+            make you care, not just understand.
+          </p>
+          <a
+            href="https://www.lozano-hemmer.com/pulse_room.php"
+            target="_blank"
+            class="glow-link"
+          >
+            Link to Website
+          </a>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/Light-Pulse.jpg"
+            alt="Pulse Room"
+            class="img-responsive"
+          />
+        </div>
       </div>
-      <div class="column">
-        <img
-          src="img/Week7/sun-yuan.jpg"
-          alt="Cant help myself"
-          class="img-responsive"
-        />
+      <div class="container">
+        <div class="column">
+          <p>Can’t Help Myself by Sun Yuan and Peng Yu:</p>
+          <p>
+            Can’t Help Myself was so unsettling but also weirdly captivating.
+            Watching the robotic arm constantly try to contain the red liquid
+            felt like watching something painfully human. It was stuck in this
+            endless loop of cleaning up its own mess. It made me think about
+            control, failure, and how exhausting it is to try and keep
+            everything together. Even though it’s just a machine, it almost felt
+            alive. I like how physical computing was used to create something so
+            emotional, something that made people stop and actually feel
+            something.
+          </p>
+          <a
+            href="https://www.guggenheim.org/artwork/34812"
+            target="_blank"
+            class="glow-link"
+          >
+            Link to Website
+          </a>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/sun-yuan.jpg"
+            alt="Cant help myself"
+            class="img-responsive"
+          />
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="column">
-        <p>Murder Machine by Diego Zaks:</p>
-        <p>
-          This was an interesting piece because it looks so simple at first, but
-          it draws you in as you realise what it’s actually doing. It
-          auto-generates and prints out the details of murders happening in
-          Venezuela every 20 minutes. It made the violence feel constant and
-          mechanical, like it had become so normalised. The idea to make the
-          machine feed receipts was also really powerful. It made the
-          information feel disposable, which says a lot about how numb people
-          have become to tragedy. The whole piece really stuck with me.
-        </p>
-        <a
-          href="https://www.behance.net/gallery/27975357/Murder-Machine"
-          target="_blank"
-          class="glow-link"
-        >
-          Link to Website
-        </a>
-      </div>
-      <div class="column">
-        <img
-          src="img/Week7/Murder-Machine.png"
-          alt="Murder Machine"
-          class="img-responsive"
-        />
+      <div class="container">
+        <div class="column">
+          <p>Murder Machine by Diego Zaks:</p>
+          <p>
+            This was an interesting piece because it looks so simple at first,
+            but it draws you in as you realise what it’s actually doing. It
+            auto-generates and prints out the details of murders happening in
+            Venezuela every 20 minutes. It made the violence feel constant and
+            mechanical, like it had become so normalised. The idea to make the
+            machine feed receipts was also really powerful. It made the
+            information feel disposable, which says a lot about how numb people
+            have become to tragedy. The whole piece really stuck with me.
+          </p>
+          <a
+            href="https://www.behance.net/gallery/27975357/Murder-Machine"
+            target="_blank"
+            class="glow-link"
+          >
+            Link to Website
+          </a>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week7/Murder-Machine.png"
+            alt="Murder Machine"
+            class="img-responsive"
+          />
+        </div>
       </div>
     </div>
   </body>
