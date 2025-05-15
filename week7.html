@@ -17,204 +17,169 @@
       <a href="week5.html">Week 5</a>
       <a href="week6.html">Week 6</a>
       <a href="week7.html" class="active">Week 7</a>
+      <a href="week8.html">Week 8</a>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
     </div>
     <div class="container">
       <div class="column">
-        <h1>Week 6</h1>
-        <h2>Data in your Pocket</h2>
+        <h1>Week 7</h1>
+        <h2>Arduino Kit</h2>
         <p>
-          This was a group activity where we explored different ways of
-          visualising data. We began by emptying the contents of our bags and,
-          as a group, came up with a unique way to categorise the items. We
-          decided to sort them based on “how long we’d spend looking for the
-          item if we lost it.” The items were arranged in a circular pattern,
-          with the most important things placed at the center and the less
-          important ones radiating outward.
-        </p>
-        <p>
-          What made this activity really fun was realising just how many things
-          we all carry around without noticing. It also sparked some deeper
-          thinking: how many mundane things in our lives could be re-categorised
-          or reframed to tell a story? This experience made me appreciate how
-          even ordinary objects can gain meaning when viewed through a different
-          lens.
+          This week we explored Arduino and learned about all the components in
+          the Arduino kit, what each one is used for, and different ways to use
+          them. It was interesting to see how far physical computing could
+          actually go. One of the Telstra Space members showed us his project
+          called Moth to the Flame, which was so cool to see. It was really
+          poetic and so intricate, and it was interesting to see what was
+          possible with physical computing.
         </p>
       </div>
       <div class="column">
         <img
-          src="img/week6/data-in-your-pocket.jpeg"
-          alt="[data in your pocket"
+          src="img/Week7/Arduino-Kit.jpeg"
+          alt="Arduino Kit"
           class="img-responsive"
         />
       </div>
     </div>
     <div class="container">
       <div class="column">
-        <h2>Data Visualisation Pie-Chart</h2>
+        <h2>Using Arduino to Power an LED Light</h2>
         <p>
-          I created this pie chart as a simple example of data visualisation
-          using p5.js. It shows how much storage I’m using across my most-used
-          devices and platforms: my laptop, mobile, Google Drive, and iCloud.
+          This was one of the first circuits we built using just the Arduino as
+          a power source, without writing any code. It was a simple setup with a
+          button, resistor, and LED, but it helped me understand how electricity
+          flows through a circuit. Pressing the button completed the circuit and
+          lit up the LED, which made the whole thing feel really hands-on and
+          physical. It was a good way to start thinking about how input and
+          output works, even before introducing code. I realised how important
+          it is to understand the hardware side, not just the programming.
         </p>
-        <p>
-          To build the chart, I used a for loop to calculate the proportion of
-          each item and render it as a slice of the circle. I also added a
-          color-coded legend to make the data easier to read. Each section of
-          the pie represents the amount of storage used on that device or
-          service.
-        </p>
-        <p>
-          It was a fun way to visually reflect on just how much digital space I
-          occupy. This activity also helped me understand how to break data into
-          parts and represent it proportionally.
-        </p>
-        <p>Code Snippet:</p>
-        <pre><code class="language-javascript">
-            var storageLabels = ["Laptop", "Mobile", "Google Drive", "iCloud"];
-            var storageValues = [493.38, 200, 200, 200];
-            var storageColors;
-            
-            function setup() {
-              createCanvas(600, 500);
-              angleMode(DEGREES);
-            
-              storageColors = [
-                color(255, 100, 100),   
-                color(100, 150, 255),   
-                color(255, 200, 100),   
-                color(150, 255, 150)   
-              ];
-            }
-            
-            function draw() {
-              background(255);
-              translate(250, height / 2);
-            
-              let total = 0;
-              for (let i = 0; i < storageValues.length; i++) {
-                total += storageValues[i];
-              }
-            
-              let startAngle = 0;
-            
-              for (let i = 0; i < storageValues.length; i++) {
-                let value = storageValues[i];
-                let angle = (value / total) * 360;
-            
-                fill(storageColors[i]);
-                arc(0, 0, 300, 300, startAngle, startAngle + angle, PIE);
-            
-                startAngle += angle;
-              }
-            
-              translate(200, -150);
-              for (let i = 0; i < storageLabels.length; i++) {
-                fill(storageColors[i]);
-                rect(0, i * 30, 20, 20);
-                fill(0);
-                text(storageLabels[i], 30, i * 30 + 15);
-              }
-            
-              noLoop();
-            }
-            </code></pre>
       </div>
       <div class="column">
         <img
-          src="img/week6/piechart.png"
-          alt="Pie Chart"
+          src="img/Week7/light-up-button.png"
+          alt="Arduino Kit"
           class="img-responsive"
         />
+        <video
+          src="img/Week7/Button-Led.mp4"
+          controls
+          class="video-responsive"
+        ></video>
       </div>
     </div>
     <div class="container">
       <div class="column">
-        <h2>Dance Snippet</h2>
+        <h2>Arduino and a potentiometer to control an LED light</h2>
         <p>
-          This sketch turns sound into movement using p5.js and the p5.Sound
-          library. A circle and the word “DANCE” react to the volume of a
-          looping audio track — growing, rotating, and following the mouse based
-          on sound input. The random “DANCE NOW” button adds a playful,
-          energetic touch. This was a fun way to explore sound as data and use
-          it to create interactive, expressive visuals.
+          The potentiometer let us change the brightness in real time, kind of
+          like a dimmer switch. It was interesting to see how turning a knob
+          could be translated into both code and electrical output. It made it
+          really clear how analog input can control output in a physical way.
+          This helped me understand how sensors and inputs work with hardware
+          and software to create interactive experiences.
         </p>
         <p>Code Snippet:</p>
         <pre><code class="language-javascript">
-            var sound, analyzer, volume, myButton;
-            
-            function preload() {
-              sound = loadSound("data/bubble.mp3");
-            }
-            
-            function setup() {
-              createCanvas(windowWidth, windowHeight);
-              background("pink");
-              getAudioContext().suspend();
-              analyzer = new p5.Amplitude();
-              textAlign(CENTER, CENTER);
-              myButton = createButton("DANCE NOW");
-              myButton.position(random(width), random(height));
-            }
-            
-            function draw() {
-              background("pink");
-              volume = analyzer.getLevel();
-              mappedVol = map(volume, 0, 1.0, 0, width);
-              circle(mouseX, mouseY, mappedVol);
-            
-              push();
-              translate(width / 2, height / 2);
-              rotate(mappedVol);
-              textSize(mappedVol);
-              text("DANCE", 0, 0);
-              pop();
-            
-              console.log(volume + "|" + mappedVol);
-            }
-            
-            function mousePressed() {
-              getAudioContext().resume();
-              analyzer = new p5.Amplitude();
-              analyzer.setInput(sound);
-              loop();
-            
-              if (sound.isPlaying()) {
-                sound.stop();
-                sound.noLoop();
-              } else {
-                sound.play();
-                sound.loop();
-              }
-            }
-            
-            function keyPressed() {
-              if (key == "b") {
-                fill("blue");
-              }
-            }
+            int ledPin = 11;
+int ledBrightness = 0;
+
+int potPin = A0;
+int potVal = 0;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  potVal = analogRead(potPin);
+  ledBrightness = potVal / 4;
+  analogWrite(ledPin, ledBrightness);
+  delay(10);
+}
             </code></pre>
       </div>
       <div class="column">
         <img
-          src="img/week6/dance-now.gif"
-          alt="Dance Now"
+          src="img/Week7/Potentiometer.png"
+          alt="Arduino Kit"
           class="img-responsive"
         />
+        <video
+          src="img/Week7/potentiometer.mp4"
+          controls
+          class="video-responsive"
+        ></video>
+      </div>
+    </div>
+    <div class="container">
+      <div class="column">
+        <h2>Capacitive Sensor with a Buzzer</h2>
+        <p>
+          We worked with a capacitive sensor and a buzzer, where the buzzer
+          would go off if someone was in close proximity to it. It was really
+          interesting to see it react in real time, and it made me realise how
+          much everyday technology works in a similar way. I also started to see
+          how physical computing could be used creatively. Even something as
+          simple as a buzzer could feel emotional or symbolic, depending on the
+          context. It was fun to build, and even when it didn’t work at first,
+          the hands-on trial and error helped everything make more sense.
+        </p>
+        <p>Code Snippet:</p>
+        <pre><code class="language-javascript">
+            int const trigPin = 11;
+int const echoPin = 12;
+int const buzzPin = 2;
+
+void setup()
+{
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzPin, OUTPUT);
+}
+
+void loop()
+{
+  int duration, distance;
+
+  digitalWrite(trigPin, HIGH);
+  delay(1);
+  digitalWrite(trigPin, LOW);
+  
+  duration = pulseIn(echoPin, HIGH);
+  distance = (duration / 2) / 29.1;
+  
+  if (distance <= 50 && distance >= 0) {
+    tone(buzzPin, 120, 500);
+  } 
+  else {
+    digitalWrite(buzzPin, 0);
+  }
+
+  delay(60);
+}
+
+        </code></pre>
+      </div>
+      <div class="column">
+        <img
+          src="img/Week7/capacitative-sensor.png"
+          alt="Arduino Kit"
+          class="img-responsive"
+        />
+        <video
+          src="img/Week7/Ultrasonic-Sensor.mp4"
+          controls
+          class="video-responsive"
+        ></video>
       </div>
     </div>
     <div class="container">
       <div class="column">
         <h2>Hunt n Gather</h2>
-        <p>Population By Pixel:</p>
-        <p>
-          Population by Pixel campaign is a powerful example of data
-          visualization used for emotional impact. Each image shows an
-          endangered species, but instead of smooth gradients or high-res
-          detail, the photo is made up of individual pixels—each one
-          representing a single animal left in the wild.
-        </p>
+        <p>Pulse Room by Rafael Lozano-Hemmer</p>
         <p>
           I thought it was such a powerful way to turn numbers into something
           you can feel. Seeing just a handful of pixels make up an entire animal
@@ -222,62 +187,75 @@
           care, not just understand.
         </p>
         <a
-          href="https://petapixel.com/2019/10/01/photos-of-endangered-species-where-every-pixel-represents-one-animal/"
+          href="https://www.lozano-hemmer.com/pulse_room.php"
           target="_blank"
-          >Link to Website</a
+          class="glow-link"
         >
+          Link to Website
+        </a>
       </div>
       <div class="column">
         <img
-          src="img/week6/Hunt/sea-turtle.webp"
-          alt="Population By Pixel"
+          src="img/Week7/Light-Pulse.jpg"
+          alt="Pulse Room"
           class="img-responsive"
         />
       </div>
     </div>
     <div class="container">
       <div class="column">
-        <p>Eat the Rich:</p>
+        <p>Can’t Help Myself by Sun Yuan and Peng Yu:</p>
         <p>
-          1 Pixel Wealth was such a crazy yet simple way to show the scale of
-          wealth inequality. I love how it’s literally just pixels and names,
-          but it says so much. I like that it doesn’t over-explain anything-it
-          just lets the scroll do the talking. The fact that the scrolling
-          literally never ends really puts things into perspective for me.
+          Can’t Help Myself was so unsettling but also weirdly captivating.
+          Watching the robotic arm constantly try to contain the red liquid felt
+          like watching something painfully human. It was stuck in this endless
+          loop of cleaning up its own mess. It made me think about control,
+          failure, and how exhausting it is to try and keep everything together.
+          Even though it’s just a machine, it almost felt alive. I like how
+          physical computing was used to create something so emotional,
+          something that made people stop and actually feel something.
         </p>
         <a
-          href="https://eattherichtextformat.github.io/1-pixel-wealth/"
+          href="https://www.guggenheim.org/artwork/34812"
           target="_blank"
-          >Link to Website</a
+          class="glow-link"
         >
+          Link to Website
+        </a>
       </div>
       <div class="column">
         <img
-          src="img/week6/Hunt/eat-the-rich.gif"
-          alt="Eat the Rich"
+          src="img/Week7/sun-yuan.jpg"
+          alt="Cant help myself"
           class="img-responsive"
         />
       </div>
     </div>
     <div class="container">
       <div class="column">
-        <p>Dear Data:</p>
+        <p>Murder Machine by Diego Zaks:</p>
         <p>
-          Dear Data changed the way I think about data visualization. I love how
-          Giorgia Lupi and Stefanie Posavec turned something so analytical into
-          something emotional and hand drawn. I like the idea that data doesn’t
-          have to be digital or polished, it can be messy, expressive, and full
-          of feeling. I also liked how each week’s topic became such a unique
-          form of reflection.
+          This was an interesting piece because it looks so simple at first, but
+          it draws you in as you realise what it’s actually doing. It
+          auto-generates and prints out the details of murders happening in
+          Venezuela every 20 minutes. It made the violence feel constant and
+          mechanical, like it had become so normalised. The idea to make the
+          machine feed receipts was also really powerful. It made the
+          information feel disposable, which says a lot about how numb people
+          have become to tragedy. The whole piece really stuck with me.
         </p>
-        <a href="https://www.dear-data.com/theproject" target="_blank"
-          >Link to Website</a
+        <a
+          href="https://www.behance.net/gallery/27975357/Murder-Machine"
+          target="_blank"
+          class="glow-link"
         >
+          Link to Website
+        </a>
       </div>
       <div class="column">
         <img
-          src="img/week6/Hunt/data.png"
-          alt="Dear Data:"
+          src="img/Week7/Murder-Machine.png"
+          alt="Murder Machine"
           class="img-responsive"
         />
       </div>
