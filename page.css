@@ -30,7 +30,7 @@ body {
   background: #ffffff;
   font-family: Arial, sans-serif;
   padding-top: 100px;
-  border-top: 8px solid#111199;
+  border-top: 8px solid #111199; /* fixed the missing space */
   border-radius: 16px 16px 0 0;
   box-shadow: inset 0 8px 12px rgba(0, 0, 0, 0.05);
   margin: 40px;
@@ -38,6 +38,7 @@ body {
   transition: background-color 0.4s ease;
 }
 
+/* ✅ Back to original positioning */
 .navbar {
   display: flex;
   justify-content: flex-start;
@@ -50,53 +51,26 @@ body {
 }
 
 .navbar a {
-  padding: 10px 20px;
+  padding: 14px 26px;
   text-decoration: none;
-  font-family: "owners-wide", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 10px 10px 0 0;
-  transition: all 0.2s ease;
-  color: black;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.tab-week1 {
-  background: #d0ebff;
-}
-
-.tab-week2 {
-  background: #a2d2ff;
-}
-
-.tab-week3 {
-  background: #89c2d9;
-}
-
-.tab-week4 {
-  background: #5ca0d3;
-}
-
-.tab-week5 {
-  background: #3b82f6;
-}
-
-.tab-week6 {
-  background: #2563eb;
-}
-
-.tab-home {
-  background: #1e3a8a;
-}
-
-.tab-about {
-  background: #162e5b;
+  font-family: "filmotype-yale", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: normal;
+  color: #0000cc;
+  background: linear-gradient(145deg, #f5f5f5 0%, #dcdcdc 40%, #bfbfbf 100%);
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #b5b5b5;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 2px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .navbar a:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  filter: brightness(1.05);
+  background: linear-gradient(145deg, #fdfdfd 0%, #e4e4e4 40%, #cccccc 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 0 12px #79fe0c, 0 0 20px #79fe0c,
+    inset 0 2px 3px rgba(255, 255, 255, 0.5), 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .navbar a.active {
@@ -106,9 +80,11 @@ body {
 }
 
 h1 {
-  font-family: "owners-wide", sans-serif;
-  font-size: 30px;
-  color: blue;
+  font-family: "filmotype-yale", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+  color: #0000ff;
   padding: 20px;
 }
 
@@ -150,6 +126,7 @@ p {
 #main-folder {
   animation: floatIn 0.9s ease-out;
 }
+
 .js-sketch-container {
   display: flex;
   flex-direction: column;
