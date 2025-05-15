@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 8</title>
+    <link rel="stylesheet" href="page.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
+  </head>
+  <body>
+    <div class="folder-page">
+      <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="week1.html">Week 1</a>
+        <a href="week2.html">Week 2</a>
+        <a href="week3.html">Week 3</a>
+        <a href="week4.html">Week 4</a>
+        <a href="week5.html">Week 5</a>
+        <a href="week6.html">Week 6</a>
+        <a href="week7.html">Week 7</a>
+        <a href="week8.html">Week 8</a>
+        <a href="week8.html" class="active">Week 9</a>
+
+        <a href="about.html">About</a>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h1>Week 8</h1>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="column">
+          <h2>Chindogu Sketches</h2>
+          <h2>Sketch 1: Anti-Chip Eater</h2>
+          <p>
+            The Anti-Chip Eater is a Chindōgu invention designed to stop you
+            from eating chips — but in the most unnecessarily complicated way
+            possible. It involves small fingertip gloves with blunt spikes. When
+            you try to pick up a chip, the spikes crush it before it reaches
+            your mouth.
+          </p>
+          <p>
+            This idea plays with the tension between temptation and
+            self-control, especially around snack foods. Instead of relying on
+            willpower, it turns your own fingers into the obstacle. It’s a
+            literal, physical reminder to stop but it’s also funny and
+            definetely not meant to be a real solution.
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week9/Chindogu-1.jpeg"
+            alt="Anti-Chip Eater"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h2>Sketch 2: Septum Air Freshner</h2>
+          <p>
+            The Septum Air Freshener is a personal scent device that clips onto
+            your septum like a nose ring. Its purpose is to make everything
+            smell good,all the time. Whether you’re walking through garbage or
+            public transport, this invention ensures your experience remains
+            fragrant.
+          </p>
+          <p>
+            This idea pushes the boundaries of wearable convenience, taking the
+            idea of air fresheners from homes and cars to the most personal
+            space possible… your face.
+          </p>
+          <p>
+            I liked coming up with this because it plays with the idea of
+            control and comfort — we’re always trying to fix things in our
+            environment, and this takes that to the extreme. It’s funny, kind of
+            useful, kind of embarrassing…
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week9/Chindogu-2.jpg"
+            alt="Anti-Chip Eater"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="column">
+          <h2>Sketch 3: Spaghetti Twister</h2>
+          <p>
+            The Spaghetti Twister is a machine that spins your fork for you, so
+            you get the perfect, mess-free mouthful of pasta every time. It’s
+            meant to solve the “problem” of spaghetti being a little annoying to
+            eat — but does so in the most over-engineered way possible.
+          </p>
+          <p>
+            The idea really stretches the concept of convenience. Sure, it helps
+            avoid the mess of twisting spaghetti, but it probably creates even
+            more work when it comes to setting it up and cleaning it. It kind of
+            defeats its own purpose, which is exactly what makes it a Chindōgu.
+          </p>
+          <p>
+            I liked this idea because it’s so impractical and tedious for such a
+            simple task, it just feels really silly — but in a way that sticks.
+            And honestly, I do hate the mess of getting that perfect pasta
+            twist, so maybe it’s not completely useless.
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week9/Chindogu-3.jpg"
+            alt="spaghetti"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h2>Arduino and a p5.js</h2>
+          <p>
+            We connected an Arduino and a p5.js sketch using serial
+            communication. A potentiometer connected to the Arduino was used as
+            an input device — as you twisted it, it changed the brightness and
+            size of a circle displayed in the browser using p5.js.The Arduino
+            sent a simplified value (between 0–255) over serial, which p5.js
+            read in real time.
+          </p>
+          <p>
+            This was one of my first proper experiences seeing hardware and
+            software interact smoothly. The connection between turning something
+            physical and instantly seeing the screen respond made it feel really
+            alive. It was exciting to build that feedback loop between physical
+            input and digital output.
+          </p>
+          <p>
+            The idea itself was super simple — just changing the brightness and
+            size of a circle — but it was a great intro to how serial
+            communication actually works. I also thought it was cool that the
+            setup allowed for two-way interaction, even if we didn’t end up
+            using that part. It made me realise how this could be used in way
+            more interactive projects.
+          </p>
+          <p>Code Snippet:</p>
+          <pre><code class="language-javascript">
+            let serial;
+let dataIn = 0;
+let isConnected = false;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  serial = new p5.SerialPort();
+
+  serial.on('connected', () => print("Serial Connected"));
+  serial.on('data', serialEvent);
+  serial.on('open', () => print("Port open!"));
+  serial.on('error', (err) => print("Serial error: ", err));
+  serial.on('close', () => print("Port closed"));
+
+  // Replace with your specific port name (or use serial.getPorts() to find)
+  serial.open('/dev/tty.usbmodem123456'); // Update this line with your port
+}
+
+function draw() {
+  let bg = map(dataIn, 0, 255, 0, 255);
+  background(bg);
+  
+  fill(255 - bg, 100, 200);
+  noStroke();
+  let size = map(dataIn, 0, 255, 50, width);
+  circle(width/2, height/2, size);
+}
+
+function serialEvent() {
+  let raw = serial.readLine().trim();
+  if (raw.length > 0) {
+    dataIn = int(raw);
+    print("Received: " + dataIn);
+  }
+}
+
+// OPTIONAL: Send mouse position back to Arduino
+function mouseMoved() {
+  let xMapped = floor(map(mouseX, 0, width, 0, 255));
+  let yMapped = floor(map(mouseY, 0, height, 0, 255));
+  let message = `${xMapped},${yMapped}\n`;
+  serial.write(message);
+}
+
+            </code></pre>
+        </div>
+        <div class="column">
+          <img src="img/Week9/IMG_8481.jpeg" alt="-" class="img-responsive" />
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h2>Potentiometer-Controlled Colour Display</h2>
+          <p>
+            The potentiometer let us change the brightness in real time, kind of
+            like a dimmer switch. It was interesting to see how turning a knob
+            could be translated into both code and electrical output. It made it
+            really clear how analog input can control output in a physical way.
+            This helped me understand how sensors and inputs work with hardware
+            and software to create interactive experiences.
+          </p>
+          <p>Code Snippet:</p>
+          <pre><code class="language-javascript">
+            #define NUM_VALUES 2
+#define OUTPUT_PIN1 11
+#define OUTPUT_PIN2 10
+
+long lastSerialOut = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(OUTPUT_PIN1, OUTPUT);
+  pinMode(OUTPUT_PIN2, OUTPUT);
+}
+
+void loop() {
+  if (millis() > lastSerialOut + 100) {
+    Serial.println(analogRead(A0) / 4);
+    lastSerialOut = millis();
+  }
+}
+
+void serialEvent() {
+  if (Serial.available() > 0) {
+    int incomingValues[NUM_VALUES];
+    String rcvdSerialData = Serial.readStringUntil('\n');
+    split(rcvdSerialData, incomingValues, NUM_VALUES);
+
+    analogWrite(OUTPUT_PIN1, incomingValues[0]);
+    analogWrite(OUTPUT_PIN2, incomingValues[1]);
+  }
+}
+
+void split(String inputString, int returnData[], int numOfValues) {
+  int index = 0;
+  int lastPos = 0;
+
+  for (int i = 0; i < inputString.length(); i++) {
+    if ((inputString.charAt(i) == ',' || inputString.charAt(i) == ';') && index < numOfValues) {
+      String tempStr = inputString.substring(lastPos, i);
+      returnData[index] = tempStr.toInt();
+      index++;
+      lastPos = i + 1;
+    }
+  }
+}
+            </code></pre>
+        </div>
+        <div class="column">
+          <video
+            src="img/Week9/P5+Arduino.mp4"
+            controls
+            class="video-responsive"
+          ></video>
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h2>Capacitive Sensor with a Buzzer</h2>
+          <p>
+            We worked with a capacitive sensor and a buzzer, where the buzzer
+            would go off if someone was in close proximity to it. It was really
+            interesting to see it react in real time, and it made me realise how
+            much everyday technology works in a similar way. I also started to
+            see how physical computing could be used creatively. Even something
+            as simple as a buzzer could feel emotional or symbolic, depending on
+            the context. It was fun to build, and even when it didn’t work at
+            first, the hands-on trial and error helped everything make more
+            sense.
+          </p>
+          <p>Code Snippet:</p>
+          <pre><code class="language-javascript">
+            #define NUM_VALUES 2
+#define OUTPUT_PIN1 11
+#define OUTPUT_PIN2 10
+
+long lastSerialOut = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(OUTPUT_PIN1, OUTPUT);
+  pinMode(OUTPUT_PIN2, OUTPUT);
+}
+
+void loop() {
+  if (millis() > lastSerialOut + 100) {
+    Serial.println(analogRead(A0) / 4);
+    lastSerialOut = millis();
+  }
+}
+
+void serialEvent() {
+  if (Serial.available() > 0) {
+    int incomingValues[NUM_VALUES];
+    String rcvdSerialData = Serial.readStringUntil('\n');
+    split(rcvdSerialData, incomingValues, NUM_VALUES);
+
+    analogWrite(OUTPUT_PIN1, incomingValues[0]);
+    analogWrite(OUTPUT_PIN2, incomingValues[1]);
+  }
+}
+
+void split(String inputString, int returnData[], int numOfValues) {
+  int index = 0;
+  int lastPos = 0;
+
+  for (int i = 0; i < inputString.length(); i++) {
+    if ((inputString.charAt(i) == ',' || inputString.charAt(i) == ';') && index < numOfValues) {
+      String tempStr = inputString.substring(lastPos, i);
+      returnData[index] = tempStr.toInt();
+      index++;
+      lastPos = i + 1;
+    }
+  }
+}
+
+        </code></pre>
+        </div>
+        <div class="column">
+          <video
+            src="img/Week9/P5+Arduino.mp4"
+            controls
+            class="video-responsive"
+          ></video>
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <h2>Other Explorations</h2>
+          <p>Final Project Brainstorming:</p>
+          <p>Sentimirror</p>
+          <p>
+            Gunjan and I decided to team up and come up with an idea that
+            incorporates both p5.js and interactive elements. We knew we wanted
+            it to be an installation, and we both liked the idea of something
+            poetic, emotional, and rooted in self-reflection.
+          </p>
+          <p>
+            We brainstormed ways we wanted the experience to look and feel. We
+            were drawn to the concept of self-reflection, both literally and
+            figuratively. The idea was that a person would stand in front of a
+            mirror, and the machine would read their emotional input and respond
+            with a sensory output that is both visual and auditory.
+          </p>
+          <p>
+            We were inspired by artworks we had found in the past weeks,
+            especially We Feel Fine by Jonathan Harris and Sep Kamvar, and Text
+            Rain by Camille Utterback and Romy Achituv. These pieces helped
+            shape how we thought about emotion, language, and interaction in a
+            digital space.
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week9/Brainstorming.png"
+            alt="Pulse Room"
+            class="img-responsive"
+          />
+          <img
+            src="img/Week9/Sketch.jpeg"
+            alt="Pulse Room"
+            class="img-responsive"
+          />
+         
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <p>Sentimirror</p>
+          <p>
+            <p>Sentimirror is a web-based interactive artwork that visualises a user’s emotional state through colour, motion, and silhouette interaction.</p>
+          <p>The experience begins with the user answering a poetic question, such as “What do you feel when you close your eyes?” Their written response is analysed using ML5.js sentiment analysis to detect the emotional tone as positive, neutral, or negative.</p>
+         <p>Based on this input, the system generates emotion-driven visuals. Waves of colour shift in palette, speed, and behaviour depending on the detected mood. A webcam captures the user’s silhouette, allowing them to interact with the visuals using their body in real time.</p>
+          <p>The result is a reflective and expressive experience that responds to a wide range of feelings, from calm and joyful to anxious or uncertain. It turns the user’s presence into a canvas for emotion.</p>
+        
+          </p>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week9/Senti-Mirror.png"
+            alt="Pulse Room"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="column">
+            <h2>Hunt n Gather:</h2>
+          <p>Touchable Memories by Lola Studios:</p>
+          <p>
+            Touchable Memories really touched me. I’m always drawn to sensitive,
+            emotional projects like this, and I found the idea so beautiful. The
+            fact that something as simple as a photo could be turned into a 3D
+            object for someone to physically feel was so moving. It made me
+            think about how powerful design can be when it focuses on connection
+            and accessibility, rather than just innovation for the sake of it. I
+            loved that it wasn’t about flashy tech — it was quiet, personal, and
+            full of meaning. It reminded me why I love design in the first
+            place.
+          </p>
+          <a
+            href="https://lbbonline.com/news/how-lola-is-3d-printing-touchable-memories-for-the-blind"
+            target="_blank"
+            class="glow-link"
+          >
+            Link to Website
+          </a>
+        </div>
+        <div class="column">
+          <iframe
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/109041102?h=80c14d2072"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <p>Text Rain by Camille Utterback & Romy Achituv</p>
+          <p>
+            I really liked this project, It’s such a poetic way to bring
+            interaction into art. I loved how the falling letters would respond
+            to your body, it felt playful and meaningful. You’re not just
+            looking at the artwork, you’re in it, shaping it. It made me think
+            about how interfaces can be emotional and immersive, not just
+            functional. The idea that you could literally catch words with your
+            body felt so symbolic — like your presence alone could shift
+            language or meaning. I found it soft, thoughtful, and beautifully
+            done.
+          </p>
+          <a
+            href="https://camilleutterback.com/projects/text-rain/"
+            target="_blank"
+            class="glow-link"
+          >
+            Link to Website
+          </a>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week8/Text-Rain.png"
+            alt="Murder Machine"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
