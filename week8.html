@@ -34,7 +34,7 @@
         <div class="column">
           <h2>LED’S Controlled by a Remote</h2>
           <p>
-            We also tried building a project that used an IR sensor and a remote
+            We built a project that used an IR sensor and a remote
             to control a row of LEDs. The idea was that pressing different
             buttons would light up different LEDs, which sounded fun and
             interactive. Even though it didn’t end up working during class, it
@@ -110,113 +110,10 @@
           ></video>
         </div>
       </div>
-      <div class="container">
-        <div class="column">
-          <h2>Arduino and a potentiometer to control an LED light</h2>
-          <p>
-            The potentiometer let us change the brightness in real time, kind of
-            like a dimmer switch. It was interesting to see how turning a knob
-            could be translated into both code and electrical output. It made it
-            really clear how analog input can control output in a physical way.
-            This helped me understand how sensors and inputs work with hardware
-            and software to create interactive experiences.
-          </p>
-          <p>Code Snippet:</p>
-          <pre><code class="language-javascript">
-            int ledPin = 11;
-int ledBrightness = 0;
+      
+      
 
-int potPin = A0;
-int potVal = 0;
-
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
-  potVal = analogRead(potPin);
-  ledBrightness = potVal / 4;
-  analogWrite(ledPin, ledBrightness);
-  delay(10);
-}
-            </code></pre>
-        </div>
-        <div class="column">
-          <img
-            src="img/Week7/Potentiometer.png"
-            alt="Arduino Kit"
-            class="img-responsive"
-          />
-          <video
-            src="img/Week7/potentiometer.mp4"
-            controls
-            class="video-responsive"
-          ></video>
-        </div>
-      </div>
-      <div class="container">
-        <div class="column">
-          <h2>Capacitive Sensor with a Buzzer</h2>
-          <p>
-            We worked with a capacitive sensor and a buzzer, where the buzzer
-            would go off if someone was in close proximity to it. It was really
-            interesting to see it react in real time, and it made me realise how
-            much everyday technology works in a similar way. I also started to
-            see how physical computing could be used creatively. Even something
-            as simple as a buzzer could feel emotional or symbolic, depending on
-            the context. It was fun to build, and even when it didn’t work at
-            first, the hands-on trial and error helped everything make more
-            sense.
-          </p>
-          <p>Code Snippet:</p>
-          <pre><code class="language-javascript">
-            int const trigPin = 11;
-int const echoPin = 12;
-int const buzzPin = 2;
-
-void setup()
-{
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(buzzPin, OUTPUT);
-}
-
-void loop()
-{
-  int duration, distance;
-
-  digitalWrite(trigPin, HIGH);
-  delay(1);
-  digitalWrite(trigPin, LOW);
-  
-  duration = pulseIn(echoPin, HIGH);
-  distance = (duration / 2) / 29.1;
-  
-  if (distance <= 50 && distance >= 0) {
-    tone(buzzPin, 120, 500);
-  } 
-  else {
-    digitalWrite(buzzPin, 0);
-  }
-
-  delay(60);
-}
-
-        </code></pre>
-        </div>
-        <div class="column">
-          <img
-            src="img/Week7/capacitative-sensor.png"
-            alt="Arduino Kit"
-            class="img-responsive"
-          />
-          <video
-            src="img/Week7/Ultrasonic-Sensor.mp4"
-            controls
-            class="video-responsive"
-          ></video>
-        </div>
-      </div>
+    
       <div class="container">
         <div class="column">
           <h2>Hunt n Gather</h2>
@@ -236,7 +133,7 @@ void loop()
         <div class="column">
           <img
             src="img/Week8/Toaster.png"
-            alt="Pulse Room"
+            alt="Toaster"
             class="img-responsive"
           />
         </div>
@@ -262,7 +159,7 @@ void loop()
         <div class="column">
           <p>Touchable Memories by Lola Studios:</p>
           <p>
-            Touchable Memories really touched me. I’m always drawn to sensitive, emotional projects like this, and I found the idea so beautiful. The fact that something as simple as a photo could be turned into a 3D object for someone to physically feel was so moving. It made me think about how powerful design can be when it focuses on connection and accessibility, rather than just innovation for the sake of it. I loved that it wasn’t about flashy tech — it was quiet, personal, and full of meaning. It reminded me why I love design in the first place.
+            Touchable Memories really stayed with me. I’m always drawn to sensitive, emotional projects like this, and I found the idea so beautiful. A photo being  turned into a 3D object for someone to physically feel was so moving. It made me think about how powerful design can be when it focuses on connection and accessibility, rather than just innovation for the sake of it. I loved that it wasn’t about flashy tech — it was quiet, personal, and full of meaning. It reminded me why I love design in the first place.
           </p>
           <a
             href="https://lbbonline.com/news/how-lola-is-3d-printing-touchable-memories-for-the-blind"

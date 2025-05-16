@@ -35,7 +35,7 @@
           <h2>Chindogu Sketches</h2>
           <h2>Sketch 1: Anti-Chip Eater</h2>
           <p>
-            The Anti-Chip Eater is a Chindōgu invention designed to stop you
+            The Anti-Chip Eater is a Chindogu invention designed to stop you
             from eating chips — but in the most unnecessarily complicated way
             possible. It involves small fingertip gloves with blunt spikes. When
             you try to pick up a chip, the spikes crush it before it reaches
@@ -101,7 +101,7 @@
             The idea really stretches the concept of convenience. Sure, it helps
             avoid the mess of twisting spaghetti, but it probably creates even
             more work when it comes to setting it up and cleaning it. It kind of
-            defeats its own purpose, which is exactly what makes it a Chindōgu.
+            defeats its own purpose.
           </p>
           <p>
             I liked this idea because it’s so impractical and tedious for such a
@@ -200,12 +200,10 @@ function mouseMoved() {
         <div class="column">
           <h2>Potentiometer-Controlled Colour Display</h2>
           <p>
-            The potentiometer let us change the brightness in real time, kind of
-            like a dimmer switch. It was interesting to see how turning a knob
-            could be translated into both code and electrical output. It made it
-            really clear how analog input can control output in a physical way.
-            This helped me understand how sensors and inputs work with hardware
-            and software to create interactive experiences.
+            I used a potentiometer connected to an Arduino to control the color output in a p5.js sketch. As I twisted the dial, the background color shifted in real time, which felt really responsive and intuitive. The Arduino was constantly reading the potentiometer’s analog value and sending it over Serial, which p5.js used to update the visuals.
+          </p>
+          <p>
+            What I found especially interesting was that we also set up two-way communication. Even though we didn’t fully use it in this version, the sketch was capable of sending data back to the Arduino to control other physical components like LEDs or motors. It opened up so many possibilities — it made me realise how much potential there is in blending physical input with creative digital output.
           </p>
           <p>Code Snippet:</p>
           <pre><code class="language-javascript">
@@ -328,7 +326,7 @@ void split(String inputString, int returnData[], int numOfValues) {
             <h2>Hunt n Gather:</h2>
           <p>The Strangers by Kyung Yun Choi</p>
           <p>
-            The Stranger is an interactive installation that uses a vintage typewriter to turn your voice into Morse code except it intentionally leaves out words like “I” and “You.” It’s super poetic. The idea is to show how language can distance us from what we really mean, or even from ourselves.
+            The Stranger is an interactive installation that uses a vintage typewriter to turn your voice into Morse code except it intentionally leaves out words like “I” and “You.” The idea is to show how language can distance us from what we really mean, or even from ourselves.
           </p>
           <p>What stood out to me is how it uses something old and mechanical (Morse code + typewriter) to reflect on the disconnect we feel in modern communication. It’s like… you’re speaking, but your voice becomes something unrecognizable and impersonal. I l guess it makes you question whether we can ever truly say what we feel.</p>
           <a
