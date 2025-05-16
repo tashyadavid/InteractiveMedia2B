@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 8</title>
+    <title>Week 9</title>
     <link rel="stylesheet" href="page.css" />
     <link rel="stylesheet" href="https://use.typekit.net/ztu5ksk.css" />
     <link rel="stylesheet" href="https://use.typekit.net/vyh2ovz.css" />
@@ -20,13 +20,13 @@
         <a href="week6.html">Week 6</a>
         <a href="week7.html">Week 7</a>
         <a href="week8.html">Week 8</a>
-        <a href="week8.html" class="active">Week 9</a>
+        <a href="week9.html" class="active">Week 9</a>
 
         <a href="about.html">About</a>
       </div>
       <div class="container">
         <div class="column">
-          <h1>Week 8</h1>
+          <h1>Week 9</h1>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
         </div>
         <div class="column">
           <img
-            src="img/Week9/Chindogu-1.jpeg"
+            src="img/Week9/Chindogu-1.png"
             alt="Anti-Chip Eater"
             class="img-responsive"
           />
@@ -262,76 +262,7 @@ void split(String inputString, int returnData[], int numOfValues) {
           ></video>
         </div>
       </div>
-      <div class="container">
-        <div class="column">
-          <h2>Capacitive Sensor with a Buzzer</h2>
-          <p>
-            We worked with a capacitive sensor and a buzzer, where the buzzer
-            would go off if someone was in close proximity to it. It was really
-            interesting to see it react in real time, and it made me realise how
-            much everyday technology works in a similar way. I also started to
-            see how physical computing could be used creatively. Even something
-            as simple as a buzzer could feel emotional or symbolic, depending on
-            the context. It was fun to build, and even when it didn’t work at
-            first, the hands-on trial and error helped everything make more
-            sense.
-          </p>
-          <p>Code Snippet:</p>
-          <pre><code class="language-javascript">
-            #define NUM_VALUES 2
-#define OUTPUT_PIN1 11
-#define OUTPUT_PIN2 10
-
-long lastSerialOut = 0;
-
-void setup() {
-  Serial.begin(9600);
-  pinMode(OUTPUT_PIN1, OUTPUT);
-  pinMode(OUTPUT_PIN2, OUTPUT);
-}
-
-void loop() {
-  if (millis() > lastSerialOut + 100) {
-    Serial.println(analogRead(A0) / 4);
-    lastSerialOut = millis();
-  }
-}
-
-void serialEvent() {
-  if (Serial.available() > 0) {
-    int incomingValues[NUM_VALUES];
-    String rcvdSerialData = Serial.readStringUntil('\n');
-    split(rcvdSerialData, incomingValues, NUM_VALUES);
-
-    analogWrite(OUTPUT_PIN1, incomingValues[0]);
-    analogWrite(OUTPUT_PIN2, incomingValues[1]);
-  }
-}
-
-void split(String inputString, int returnData[], int numOfValues) {
-  int index = 0;
-  int lastPos = 0;
-
-  for (int i = 0; i < inputString.length(); i++) {
-    if ((inputString.charAt(i) == ',' || inputString.charAt(i) == ';') && index < numOfValues) {
-      String tempStr = inputString.substring(lastPos, i);
-      returnData[index] = tempStr.toInt();
-      index++;
-      lastPos = i + 1;
-    }
-  }
-}
-
-        </code></pre>
-        </div>
-        <div class="column">
-          <video
-            src="img/Week9/P5+Arduino.mp4"
-            controls
-            class="video-responsive"
-          ></video>
-        </div>
-      </div>
+   
       <div class="container">
         <div class="column">
           <h2>Other Explorations</h2>
@@ -395,20 +326,13 @@ void split(String inputString, int returnData[], int numOfValues) {
       <div class="container">
         <div class="column">
             <h2>Hunt n Gather:</h2>
-          <p>Touchable Memories by Lola Studios:</p>
+          <p>The Strangers by Kyung Yun Choi</p>
           <p>
-            Touchable Memories really touched me. I’m always drawn to sensitive,
-            emotional projects like this, and I found the idea so beautiful. The
-            fact that something as simple as a photo could be turned into a 3D
-            object for someone to physically feel was so moving. It made me
-            think about how powerful design can be when it focuses on connection
-            and accessibility, rather than just innovation for the sake of it. I
-            loved that it wasn’t about flashy tech — it was quiet, personal, and
-            full of meaning. It reminded me why I love design in the first
-            place.
+            The Stranger is an interactive installation that uses a vintage typewriter to turn your voice into Morse code except it intentionally leaves out words like “I” and “You.” It’s super poetic. The idea is to show how language can distance us from what we really mean, or even from ourselves.
           </p>
+          <p>What stood out to me is how it uses something old and mechanical (Morse code + typewriter) to reflect on the disconnect we feel in modern communication. It’s like… you’re speaking, but your voice becomes something unrecognizable and impersonal. I l guess it makes you question whether we can ever truly say what we feel.</p>
           <a
-            href="https://lbbonline.com/news/how-lola-is-3d-printing-touchable-memories-for-the-blind"
+            href="https://www.media.mit.edu/projects/the-stranger/overview/"
             target="_blank"
             class="glow-link"
           >
@@ -416,32 +340,18 @@ void split(String inputString, int returnData[], int numOfValues) {
           </a>
         </div>
         <div class="column">
-          <iframe
-            title="vimeo-player"
-            src="https://player.vimeo.com/video/109041102?h=80c14d2072"
-            width="640"
-            height="360"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+            <iframe title="vimeo-player" src="https://player.vimeo.com/video/808114674?h=2bd53c3dd2" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
         </div>
       </div>
       <div class="container">
         <div class="column">
-          <p>Text Rain by Camille Utterback & Romy Achituv</p>
+          <p>Guài by Mindy Meng Wang and Monica Lim</p>
           <p>
-            I really liked this project, It’s such a poetic way to bring
-            interaction into art. I loved how the falling letters would respond
-            to your body, it felt playful and meaningful. You’re not just
-            looking at the artwork, you’re in it, shaping it. It made me think
-            about how interfaces can be emotional and immersive, not just
-            functional. The idea that you could literally catch words with your
-            body felt so symbolic — like your presence alone could shift
-            language or meaning. I found it soft, thoughtful, and beautifully
-            done.
+            I visited the Science Gallery and was in awe of this piece. GUÀI is this really cool interactive work that scans your face and links you to a mythical creature from ancient Chinese mythology. It honestly made me feel like I’d stepped into another realm — like I was being digitally transformed into something magical.
           </p>
+          <p>The robotic AI was so surreal. It analysed your biometrics and matched you with a character, and you could even scan the creature and take a little card home with you, which was such a fun detail. What really stood out to me was how it combined something so ancient with something so futuristic — folklore and tech coming together to say something about identity.</p>
           <a
-            href="https://camilleutterback.com/projects/text-rain/"
+            href="https://melbourne.sciencegallery.com/sci-fi-chapters-new-nature/guai"
             target="_blank"
             class="glow-link"
           >
@@ -450,8 +360,32 @@ void split(String inputString, int returnData[], int numOfValues) {
         </div>
         <div class="column">
           <img
-            src="img/Week8/Text-Rain.png"
-            alt="Murder Machine"
+            src="img/Week9/Guai.png"
+            alt="The Guai"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+      <div class="container">
+        <div class="column">
+          <p>The Changing Room by Lauren McCarthy</p>
+          <p>
+            The Changing Room is an immersive installation that lets you pick an emotion, like “nostalgic” or “envious” and then transforms the entire space to reflect that feeling. It uses sensors to track your movement, facial expressions, and voice pitch, responding with visuals, sounds, and prompts to create this shared emotional atmosphere. It actually reminded me a lot of our final project, which I thought was super interesting and really inspiring.
+          <p>
+            What I love about installations like this is how they take something internal, something we usually keep to ourselves and make it physical and shared. It made me think about how our feelings aren’t always just ours alone. This piece turns emotion into something you can literally step into, and it made me reflect on how much our environment and the people around us can shape the way we feel
+            </p>
+          <a
+            href="https://ars.electronica.art/aeblog/en/2016/07/25/lauren-mccarthy-provoziert-mitgefuehl-auf-ihre-eigene-art/"
+            target="_blank"
+            class="glow-link"
+          >
+            Link to Website
+          </a>
+        </div>
+        <div class="column">
+          <img
+            src="img/Week9/Changing-room.png"
+            alt="The Changing Room"
             class="img-responsive"
           />
         </div>
